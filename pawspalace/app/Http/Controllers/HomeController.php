@@ -13,4 +13,12 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $viewData = [];
+        $viewData['title'] = 'Home Page - PawsPalace';
+
+        return view('/home')->with('viewData', $viewData);
+    }
 }
