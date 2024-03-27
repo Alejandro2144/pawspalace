@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home Controller routes
+// User routes
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+
+// Authentication Controllers routes
+Auth::routes();
