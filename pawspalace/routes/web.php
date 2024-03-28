@@ -33,6 +33,7 @@ Route::middleware('admin')->group(function () {
     Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
 });
 
-Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index");
-Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name("cart.delete");
-Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
