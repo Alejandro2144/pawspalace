@@ -12,8 +12,8 @@ class ProductController extends Controller
     {
 
         $viewData = [
-            'title' => 'Productos - PawsPalace',
-            'subtitle' => 'Lista de productos',
+            'title' => 'Products - PawsPalace',
+            'subtitle' => 'List of products',
             'products' => Product::all(),
         ];
 
@@ -30,7 +30,7 @@ class ProductController extends Controller
 
         $viewData = [
             'title' => $product->getName().' - PawsPalace',
-            'subtitle' => $product->getName().' - Información del producto',
+            'subtitle' => $product->getName().' - Product Information',
             'product' => $product,
         ];
 
