@@ -21,4 +21,15 @@ class HomeController extends Controller
 
         return view('/home')->with('viewData', $viewData);
     }
+
+    public function about()
+    {
+        $viewData = [];
+        $viewData['title'] = 'About us - PawsPalace';
+        $viewData['subtitle'] = 'About us';
+        $viewData['description'] = 'This is an about page ...';
+        $viewData['author'] = 'Developed by: PawsPalace Team';
+
+        return view('home.about')->with('viewData', $viewData);
+    }
 }
