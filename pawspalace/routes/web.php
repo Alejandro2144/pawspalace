@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,9 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.ab
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 
-// Authentication Controllers routes
-Auth::routes();
+Route::middleware('auth')->group(function () {
+    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+});
 
 // Admin routes
 Route::middleware('admin')->group(function () {
@@ -38,3 +40,6 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.ind
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+
+// Authentication Controllers routes
+Auth::routes();
