@@ -22,7 +22,7 @@ class CartController extends Controller
         }
 
         $viewData = [];
-        $viewData["title"] = "Cart - Online Store";
+        $viewData["title"] = "Cart - PawsPalace";
         $viewData["subtitle"] =  "Shopping Cart";
         $viewData["total"] = $total;
         $viewData["products"] = $productsInCart;
@@ -87,7 +87,7 @@ class CartController extends Controller
             $request->session()->forget('products');
 
             $viewData = [];
-            $viewData["title"] = "Purchase - Online Store";
+            $viewData["title"] = "Purchase - PawsPalace";
             $viewData["subtitle"] =  "Purchase Status";
             $viewData["order"] =  $order;
             return view('cart.purchase')->with("viewData", $viewData);
