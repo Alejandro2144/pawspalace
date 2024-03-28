@@ -48,18 +48,16 @@
           <div class="mb-3 row">
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Category:</label>
             <div class="col-lg-10 col-md-6 col-sm-12">
-    <select name="category" class="form-control">
-        <option value="">Seleccionar categoría</option>
-        <option value="Alimentos" {{ ($viewData['product']->getCategory() == 'Alimentos' || old('category') == 'Alimentos') ? 'selected' : '' }}>Alimentos</option>
-        <option value="Medicamentos" {{ ($viewData['product']->getCategory() == 'Medicamentos' || old('category') == 'Medicamentos') ? 'selected' : '' }}>Medicamentos</option>
-        <option value="Accesorios" {{ ($viewData['product']->getCategory() == 'Accesorios' || old('category') == 'Accesorios') ? 'selected' : '' }}>Accesorios</option>
-    </select>
-</div>
-
+              <select name="category" class="form-control">
+                <option value="">Select category</option>
+                <option value="Alimentos" {{ ($viewData['product']->getCategory() == 'Alimentos' || old('category') == 'Alimentos') ? 'selected' : '' }}>Alimentos</option>
+                <option value="Medicamentos" {{ ($viewData['product']->getCategory() == 'Medicamentos' || old('category') == 'Medicamentos') ? 'selected' : '' }}>Medicamentos</option>
+                <option value="Accesorios" {{ ($viewData['product']->getCategory() == 'Accesorios' || old('category') == 'Accesorios') ? 'selected' : '' }}>Accesorios</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col">
           <div class="mb-3 row">

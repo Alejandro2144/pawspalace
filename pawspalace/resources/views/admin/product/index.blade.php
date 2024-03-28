@@ -45,7 +45,7 @@
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Category:</label>
             <div class="col-lg-10 col-md-6 col-sm-12">
               <select name="category" class="form-control">
-                <option value="">Seleccionar categoría</option>
+                <option value="">Select category</option>
                 <option value="Alimentos" {{ old('category') == 'Alimentos' ? 'selected' : '' }}>Alimentos</option>
                 <option value="Medicamentos" {{ old('category') == 'Medicamentos' ? 'selected' : '' }}>Medicamentos</option>
                 <option value="Accesorios" {{ old('category') == 'Accesorios' ? 'selected' : '' }}>Accesorios</option>

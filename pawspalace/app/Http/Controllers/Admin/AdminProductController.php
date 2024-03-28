@@ -12,7 +12,7 @@ class AdminProductController extends Controller
     public function index()
     {
         $viewData = [
-            'title' => 'Admin Page - Products - Online Store',
+            'title' => 'Admin Page - Products - PawsPalace',
             'products' => Product::all(),
         ];
 
@@ -55,7 +55,7 @@ class AdminProductController extends Controller
     public function edit($id)
     {
         $viewData = [
-            'title' => 'Admin Page - Edit Product - Online Store',
+            'title' => 'Admin Page - Edit Product - PawsPalace',
             'product' => Product::findOrFail($id),
         ];
 
