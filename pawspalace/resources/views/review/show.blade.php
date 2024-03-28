@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('title', $viewData["title"])
 @section('subtitle', "Información de reseña")
 @section('content')
 <div class="card mb-3">

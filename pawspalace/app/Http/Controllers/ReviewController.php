@@ -44,7 +44,7 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $viewData = [
             'subtitle' => 'Review information',
-            'reviews' => $review,
+            'review' => $review,
         ];         
 
         return view('review.show')->with('viewData', $viewData);
