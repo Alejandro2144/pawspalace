@@ -44,7 +44,12 @@
           <div class="mb-3 row">
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Category:</label>
             <div class="col-lg-10 col-md-6 col-sm-12">
-              <input name="category" value="{{ old('category') }}" type="string" class="form-control">
+              <select name="category" class="form-control">
+                <option value="">Seleccionar categoría</option>
+                <option value="Alimentos" {{ old('category') == 'Alimentos' ? 'selected' : '' }}>Alimentos</option>
+                <option value="Medicamentos" {{ old('category') == 'Medicamentos' ? 'selected' : '' }}>Medicamentos</option>
+                <option value="Accesorios" {{ old('category') == 'Accesorios' ? 'selected' : '' }}>Accesorios</option>
+              </select>
             </div>
           </div>
         </div>
@@ -85,17 +90,13 @@
           <td>{{ $product->getId() }}</td>
           <td>{{ $product->getName() }}</td>
           <td>
-            <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
-            <i class="bi-pencil"></i>
-            </a>
+            <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">Edit</a>
           </td>
           <td>
             <form action="{{ route('admin.product.delete', $product->getId())}}" method="POST">
               @csrf
               @method('DELETE') 
-              <button class="btn btn-danger">
-                <i class="bi-trash"></i>
-              </button>
+              <button class="btn btn-danger"><i class="bi-trash"></i></button>
             </form>
           </td>
         </tr>

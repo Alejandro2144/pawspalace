@@ -69,7 +69,9 @@ class AdminProductController extends Controller
         $product = Product::findOrFail($id);
         $product->setName($request->input('name'));
         $product->setDescription($request->input('description'));
+        $product->setCategory($request->input('category'));
         $product->setPrice($request->input('price'));
+        $product->setStock($request->input('stock'));
 
         if ($request->hasFile('image')) {
             $imageName = $product->getId().'.'.$request->file('image')->extension();
