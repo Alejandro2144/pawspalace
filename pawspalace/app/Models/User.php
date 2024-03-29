@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Order; 
 
 class User extends Authenticatable
 {
@@ -124,17 +124,17 @@ class User extends Authenticatable
         return $this->attributes['updated_at'];
     }
 
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function getOrders()
+    public function getOrders(): Order
     {
         return $this->orders;
     }
 
-    public function setOrders($orders)
+    public function setOrders($orders): void
     {
         $this->orders = $orders;
     }
