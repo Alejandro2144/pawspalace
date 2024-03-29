@@ -89,7 +89,7 @@ class CartController extends Controller
             $request->session()->forget('products');
 
             $viewData = [];
-            $viewData['title'] = 'Purchase - Online Store';
+            $viewData['title'] = 'Purchase - PawsPalace';
             $viewData['subtitle'] = 'Purchase Status';
             $viewData['order'] = $order;
 
