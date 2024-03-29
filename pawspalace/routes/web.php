@@ -42,5 +42,14 @@ Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
 
+// Review routes
+Route::get('/review', 'App\Http\Controllers\ReviewController@index')->name('review.index');
+Route::get('/list-reviews', 'App\Http\Controllers\ReviewController@list')->name('review.list');
+Route::get('/create-review', 'App\Http\Controllers\ReviewController@create')->name('review.create');
+Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name('review.save');
+Route::post('/review/delete/{id}', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
+Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@show')->name('review.show');
+
 // Authentication Controllers routes
 Auth::routes();
+
