@@ -134,7 +134,7 @@ class User extends Authenticatable
         return $this->orders;
     }
 
-    public function setOrders($orders): void
+    public function setOrders(Order $orders): void
     {
         $this->orders = $orders;
     }

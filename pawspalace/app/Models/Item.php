@@ -79,12 +79,12 @@ class Item extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function getOrder(): order
+    public function getOrder(): Order
     {
         return $this->order;
     }
 
-    public function setOrder($order): void
+    public function setOrder(Order $order): void
     {
         $this->order = $order;
     }
@@ -99,7 +99,7 @@ class Item extends Model
         return $this->product;
     }
 
-    public function setProduct($product): void
+    public function setProduct(Product $product): void
     {
         $this->product = $product;
     }
