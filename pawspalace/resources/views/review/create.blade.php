@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Review</title>
+    <title>Create Review</title>
 </head>
 
 <body>
@@ -29,11 +29,11 @@
 
     <form action="{{ route('review.save') }}" method="POST">
         @csrf
-        <input type="text" class="form-control mb-2" placeholder="Ingrese Comentario" name="comment"
+        <input type="text" class="form-control mb-2" placeholder="Enter Comment" name="comment"
             value="{{ old('comment') }}" />
-        <input type="number" min="1" max="5" class="form-control mb-2" placeholder="Ingrese Valoración (1-5)"
-            name="rating" value="{{ old('rating') }}" />
-        <input type="submit" class="btn btn-primary" value="Crear Review" />
+        <input type="number" min="1" max="5" class="form-control mb-2" placeholder="Enter Rating (1-5)" name="rating"
+            value="{{ old('rating') }}" />
+        <input type="submit" class="btn btn-primary" value="Create Review" />
     </form>
 </body>
 

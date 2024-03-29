@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('subtitle', "Información de reseña")
+@section('subtitle', $viewData["subtitle"])
 @section('content')
 <div class="card mb-3">
     <div class="row g-0">
@@ -9,8 +9,8 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">Valoración: {{ $viewData["review"]->getRating() }}</h5>
-                <p class="card-text"> Comentario: {{ $viewData["review"]->getComment() }}</p>
+                <h5 class="card-title"> Rating: {{ $viewData["review"]->getRating() }}</h5>
+                <p class="card-text"> Comment: {{ $viewData["review"]->getComment() }}</p>
             </div>
             <form action="{{ route('review.delete', ['id' => $viewData["review"]["id"]]) }}" method="POST">
                 @csrf

@@ -45,7 +45,7 @@ class ReviewController extends Controller
         $viewData = [
             'subtitle' => 'Review information',
             'review' => $review,
-        ];         
+        ];
 
         return view('review.show')->with('viewData', $viewData);
     }
@@ -53,10 +53,10 @@ class ReviewController extends Controller
     public function save(Request $request): RedirectResponse
     {
         try {
-            Review::validateReview($request->all());
+            Review::validateReview($request);
             Review::create($request->all());
 
-            return back()->with('success', 'Review creada satisfactoriamente');
+            return back()->with('success', 'Review created successfully');
         } catch (ValidationException $e) {
             return back()->withErrors($e->errors());
         }
@@ -68,6 +68,6 @@ class ReviewController extends Controller
 
         $review->delete();
 
-        return redirect()->route('review.list')->with('success', 'Revisión eliminada correctamente');
+        return redirect()->route('review.list')->with('success', 'Review successfully removed');
     }
 }
