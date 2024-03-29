@@ -89,10 +89,11 @@ class CartController extends Controller
             $request->session()->forget('products');
 
             $viewData = [];
-            $viewData["title"] = "Purchase - Online Store";
-            $viewData["subtitle"] =  "Purchase Status";
-            $viewData["order"] =  $order;
-            return view('cart.purchase')->with("viewData", $viewData);
+            $viewData['title'] = 'Purchase - Online Store';
+            $viewData['subtitle'] = 'Purchase Status';
+            $viewData['order'] = $order;
+
+            return view('cart.purchase')->with('viewData', $viewData);
         } else {
             return redirect()->route('cart.index');
         }
