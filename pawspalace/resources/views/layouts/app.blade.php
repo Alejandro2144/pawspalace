@@ -22,7 +22,17 @@
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
                     <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
                     <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
-                    <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+                    <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Appointment
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('appointment.create') }}">Create Appointment</a></li>
+                        <li><a class="dropdown-item" href="{{ route('appointment.index') }}">View Appointments</a></li>
+                    </ul>
+                </div>
+                
+                <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                         <a class="nav-link active" href="{{ route('login') }}">Login</a>
                         <a class="nav-link active" href="{{ route('register') }}">Register</a>
