@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,10 @@ Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.ab
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 
-// Authentication Controllers routes
-Auth::routes();
+Route::middleware('auth')->group(function () {
+    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
+    Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
+});
 
 // Admin routes
 Route::middleware('admin')->group(function () {
@@ -46,3 +49,7 @@ Route::get('/create-review', 'App\Http\Controllers\ReviewController@create')->na
 Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name('review.save');
 Route::post('/review/delete/{id}', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
 Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@show')->name('review.show');
+
+// Authentication Controllers routes
+Auth::routes();
+

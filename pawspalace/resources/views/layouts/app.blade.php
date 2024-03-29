@@ -14,7 +14,7 @@
     <!-- header -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home.index') }}">PawsPalace</a>
+            <a class="navbar-brand navbar-brand-custom" href="{{ route('home.index') }}">PawsPalace</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,11 +32,11 @@
                     <a class="nav-link active" href="{{ route('login') }}">Login</a>
                     <a class="nav-link active" href="{{ route('register') }}">Register</a>
                     @else
-                    <form id="logout" action="{{ route('logout') }}" method="POST">
-                        <a role="button" class="nav-link active"
-                            onclick="document.getElementById('logout').submit();">Logout</a>
-                        @csrf
-                    </form>
+                    <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
+                        <form id="logout" action="{{ route('logout') }}" method="POST">
+                            <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">Logout</a>
+                            @csrf
+                        </form>
                     @endguest
                 </div>
             </div>
@@ -44,7 +44,7 @@
     </nav>
     <!-- header -->
 
-    <header class="masthead bg-primary text-white text-center py-4">
+    <header class="masthead bg-primary text-black text-center py-4">
         <div class="container d-flex align-items-center flex-column">
             <h2>@yield('subtitle', 'PawsPalace')</h2>
         </div>
@@ -55,7 +55,7 @@
     </div>
 
     <!-- footer -->
-    <div class="copyright py-4 text-center text-white">
+    <div class="copyright py-4 text-center text-black">
         <div class="container">
             <small>
                 Copyright - PawsPalace
