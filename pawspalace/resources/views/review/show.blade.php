@@ -14,7 +14,7 @@
             </div>
             <form action="{{ route('review.delete', ['id' => $viewData["review"]["id"]]) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-danger" style="margin-left: 15px;">Borrar</button>
+                <button type="submit" class="btn btn-danger" style="margin-left: 15px;">Delete</button>
             </form>
         </div>
     </div>
