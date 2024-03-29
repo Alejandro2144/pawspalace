@@ -129,12 +129,12 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function getOrders(): order
+    public function getOrders(): Order
     {
         return $this->orders;
     }
 
-    public function setOrders($orders): void
+    public function setOrders(Order $orders): void
     {
         $this->orders = $orders;
     }
