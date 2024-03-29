@@ -42,6 +42,13 @@ Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
 
+//Appointment routes
+Route::get('/appointment/create', 'App\Http\Controllers\AppointmentController@create')->name('appointment.create');
+Route::post('/appointment/save', 'App\Http\Controllers\AppointmentController@save')->name('appointment.save');
+Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->name('appointment.index');
+Route::get('/appointment/{id}', 'App\Http\Controllers\AppointmentController@show')->name('appointment.show');
+Route::delete('/appointment/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.delete');
+
 // Review routes
 Route::get('/review', 'App\Http\Controllers\ReviewController@index')->name('review.index');
 Route::get('/list-reviews', 'App\Http\Controllers\ReviewController@list')->name('review.list');
@@ -52,4 +59,3 @@ Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@show')->name('
 
 // Authentication Controllers routes
 Auth::routes();
-
