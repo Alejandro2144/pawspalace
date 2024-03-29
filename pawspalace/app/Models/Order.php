@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Item;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -18,14 +18,6 @@ class Order extends Model
      * $this->user - User - contains the associated User
      * $this->items - Item[] - contains the associated items
      */
-    public static function validate($request)
-    {
-        $request->validate([
-            'total' => 'required|numeric',
-            'user_id' => 'required|exists:users,id',
-        ]);
-    }
-
     public function getId()
     {
         return $this->attributes['id'];
@@ -61,33 +53,41 @@ class Order extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function getUser()
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function setUser($user)
+    public function setUser($user): void
     {
         $this->user = $user;
     }
 
-    public function items()
+    public function items(): hasMany
     {
         return $this->hasMany(Item::class);
     }
 
-    public function getItems()
+    public function getItems(): Item
     {
         return $this->items;
     }
 
-    public function setItems($items)
+    public function setItems($items): void
     {
         $this->items = $items;
+    }
+
+    public static function validate($request)
+    {
+        $request->validate([
+            'total' => 'required|numeric',
+            'user_id' => 'required|exists:users,id',
+        ]);
     }
 }
