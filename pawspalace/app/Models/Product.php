@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -108,17 +109,17 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
 
-    public function getItems()
+    public function getItems(): item
     {
         return $this->items;
     }
 
-    public function setItems($items)
+    public function setItems($items): void
     {
         $this->items = $items;
     }
