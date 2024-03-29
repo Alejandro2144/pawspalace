@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,7 +17,7 @@ class Order extends Model
      * $this->attributes['created_at'] - timestamp - contains the order creation date
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
-     * $this->items - Item[] - contains the associated items
+     * $this->items - Collection - contains the associated items
      */
     public function getId()
     {
@@ -73,12 +74,12 @@ class Order extends Model
         return $this->hasMany(Item::class);
     }
 
-    public function getItems(): Item
+    public function getItems(): Collection
     {
         return $this->items;
     }
 
-    public function setItems(Item $items): void
+    public function setItems(Collection $items): void
     {
         $this->items = $items;
     }
