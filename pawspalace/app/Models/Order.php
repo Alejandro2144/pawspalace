@@ -63,12 +63,12 @@ class Order extends Model
         return $this->user;
     }
 
-    public function setUser($user): void
+    public function setUser(User $user): void
     {
         $this->user = $user;
     }
 
-    public function items(): hasMany
+    public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
@@ -78,7 +78,7 @@ class Order extends Model
         return $this->items;
     }
 
-    public function setItems($items): void
+    public function setItems(Item $items): void
     {
         $this->items = $items;
     }

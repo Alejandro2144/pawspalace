@@ -119,7 +119,7 @@ class Product extends Model
         return $this->items;
     }
 
-    public function setItems($items): void
+    public function setItems(Item $items): void
     {
         $this->items = $items;
     }
