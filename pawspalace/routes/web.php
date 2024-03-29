@@ -49,5 +49,13 @@ Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->
 Route::get('/appointment/{id}', 'App\Http\Controllers\AppointmentController@show')->name('appointment.show');
 Route::delete('/appointment/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.delete');
 
+// Review routes
+Route::get('/review', 'App\Http\Controllers\ReviewController@index')->name('review.index');
+Route::get('/list-reviews', 'App\Http\Controllers\ReviewController@list')->name('review.list');
+Route::get('/create-review', 'App\Http\Controllers\ReviewController@create')->name('review.create');
+Route::post('/review/save', 'App\Http\Controllers\ReviewController@save')->name('review.save');
+Route::post('/review/delete/{id}', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
+Route::get('/review/{id}', 'App\Http\Controllers\ReviewController@show')->name('review.show');
+
 // Authentication Controllers routes
 Auth::routes();

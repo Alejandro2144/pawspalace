@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
@@ -18,16 +19,6 @@ class Item extends Model
      * $this->order - Order - contains the associated Order
      * $this->product - Product - contains the associated Product
      */
-    public static function validate($request)
-    {
-        $request->validate([
-            'price' => 'required|numeric|gt:0',
-            'quantity' => 'required|numeric|gt:0',
-            'product_id' => 'required|exists:products,id',
-            'order_id' => 'required|exists:orders,id',
-        ]);
-    }
-
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -83,33 +74,43 @@ class Item extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    public function getOrder()
+    public function getOrder(): Order
     {
         return $this->order;
     }
 
-    public function setOrder($order)
+    public function setOrder(Order $order): void
     {
         $this->order = $order;
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function getProduct()
+    public function getProduct(): Product
     {
         return $this->product;
     }
 
-    public function setProduct($product)
+    public function setProduct(Product $product): void
     {
         $this->product = $product;
+    }
+
+    public static function validate($request)
+    {
+        $request->validate([
+            'price' => 'required|numeric|gt:0',
+            'quantity' => 'required|numeric|gt:0',
+            'product_id' => 'required|exists:products,id',
+            'order_id' => 'required|exists:orders,id',
+        ]);
     }
 }

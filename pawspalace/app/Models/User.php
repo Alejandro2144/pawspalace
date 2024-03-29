@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,7 +25,7 @@ class User extends Authenticatable
      * $this->attributes['balance'] - int - contains the user balance
      * $this->attributes['created_at'] - timestamp - contains the user creation date
      * $this->attributes['updated_at'] - timestamp - contains the user update date
-     * $this->orders - Order[] - contains the associated orders
+     * $this->orders - Collection - contains the associated orders
      */
 
     /**
@@ -123,17 +125,17 @@ class User extends Authenticatable
         return $this->attributes['updated_at'];
     }
 
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function getOrders()
+    public function getOrders(): Collection
     {
         return $this->orders;
     }
 
-    public function setOrders($orders)
+    public function setOrders(Collection $orders): void
     {
         $this->orders = $orders;
     }

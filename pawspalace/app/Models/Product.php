@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -19,7 +21,7 @@ class Product extends Model
      * $this->attributes['image'] - string - contains the product image
      * $this->attributes['created_at'] - string - contains the product creation timestamp
      * $this->attributes['updated_at'] - string - contains the product update timestamp
-     * $this->items - Item[] - contains the associated items
+     * $this->items - Collection - contains the associated items
      */
     protected $fillable = ['name', 'description', 'category', 'price', 'stock'];
 
@@ -108,17 +110,17 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
 
-    public function getItems()
+    public function getItems(): Collection
     {
         return $this->items;
     }
 
-    public function setItems($items)
+    public function setItems(Collection $items): void
     {
         $this->items = $items;
     }

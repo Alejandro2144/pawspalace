@@ -18,6 +18,9 @@
             <form method="POST" action="{{ route('appointment.save') }}">
               @csrf
               <input type="text" class="form-control mb-2" placeholder="enter reason for appointment" name="reason" value="{{ old('reason') }}" />
+              <input type="text" class="form-control mb-2" placeholder="enter status for appointment" name="status" value="{{ old('status') }}" />
+              <input type="text" class="form-control mb-2" placeholder="enter duration for appointment" name="duration" value="{{ old('duration') }}" />
+              <input type="text" class="form-control mb-2" placeholder="enter price for appointment" name="price" value="{{ old('price') }}" />
               <input type="text" class="form-control mb-2" placeholder="enter modality of appointment" name="modality" value="{{ old('modality') }}" />
               <input type="submit" class="btn btn-primary" value="Send" />
             </form>
