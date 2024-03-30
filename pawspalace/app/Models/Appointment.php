@@ -15,6 +15,7 @@ class Appointment extends Model
      * $this->attributes['status'] - string - contains appointment status
      * $this->attributes['modality'] - string - contains appointment modality
      * $this->attributes['price'] - int - contains the appointment price
+     * $this->attributes['image'] - string - contains the appointment image
      * $this->attributes['created_at'] - timestamp - contains the appointment created date
      * $this->attributes['updated_at'] - timestamp - contains the appointment update date
      */
@@ -73,6 +74,16 @@ class Appointment extends Model
     public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
+    }
+
+    public function getImage(): string
+    {
+        return $this->attributes['image'];
+    }
+
+    public function setImage(string $image): void
+    {
+        $this->attributes['image'] = $image;
     }
 
     public function getCreatedAt(): string

@@ -34,6 +34,13 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name('admin.product.delete');
     Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit');
     Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
+
+    Route::get('/admin/appointment', 'App\Http\Controllers\Admin\AdminAppointmentController@index')->name('admin.appointment.index');
+    Route::post('/admin/appointment/store', 'App\Http\Controllers\Admin\AdminAppointmentController@store')->name('admin.appointment.store');
+    Route::delete('/admin/appointment/{id}/delete', 'App\Http\Controllers\Admin\AdminAppointmentController@delete')->name('admin.appointment.delete');
+    Route::get('/admin/appointment/{id}/edit', 'App\Http\Controllers\Admin\AdminAppointmentController@edit')->name('admin.appointment.edit');
+    Route::put('/admin/appointment/{id}/update', 'App\Http\Controllers\Admin\AdminAppointmentController@update')->name('admin.appointment.update');
+
 });
 
 // Shopping Cart routes

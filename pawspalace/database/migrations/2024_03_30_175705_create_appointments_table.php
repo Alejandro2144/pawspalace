@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('modality');
             $table->integer('price');
+            $table->string('image');
             $table->timestamps();
         });
     }
