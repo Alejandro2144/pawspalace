@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class Review extends Model
 {
@@ -18,7 +20,7 @@ class Review extends Model
      * $this->attributes['created_at'] - timestamp - contains the review creation date
      * $this->attributes['updated_at'] - timestamp - contains the review update date
      */
-    protected $fillable = ['comment', 'rating'];
+    protected $fillable = ['comment', 'rating', 'product_id', 'user_id'];
 
     public function getId(): int
     {
@@ -55,11 +57,26 @@ class Review extends Model
         return $this->attributes['updated_at'];
     }
 
-    public static function validateReview(Request $request): void
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public static function validate(Request $request): void
     {
         $request->validate([
             'comment' => 'required',
             'rating' => 'required|integer|min:1|max:5',
+            'product_id' => [
+                Rule::unique('reviews')->where(function ($query) use ($request) {
+                    return $query->where('product_id', $request->input('product_id'));
+                })
+            ],
+            'user_id' => [
+                Rule::exists('users', 'id')->where(function ($query) use ($request) {
+                    return $query->where('id', $request->input('user_id'));
+                })
+            ],
         ]);
     }
 }

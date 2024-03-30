@@ -8,6 +8,23 @@
         crossorigin="anonymous" />
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <title>@yield('title', 'PawsPalace')</title>
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    .content-grey {
+        min-height: calc(100vh - 56px);
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Color del footer */
+    }
+    </style>
 </head>
 
 <body>
@@ -26,25 +43,28 @@
                     <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
                     <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
                     <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Appointment
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('appointment.create') }}">Create Appointment</a></li>
-                        <li><a class="dropdown-item" href="{{ route('appointment.index') }}">View Appointments</a></li>
-                    </ul>
-                </div>
-                    <a class="nav-link active" href="{{ route('review.index') }}">Review</a>
-                <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Appointment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ route('appointment.create') }}">Create Appointment</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('appointment.index') }}">View Appointments</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login') }}">Login</a>
                     <a class="nav-link active" href="{{ route('register') }}">Register</a>
                     @else
                     <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
-                        <form id="logout" action="{{ route('logout') }}" method="POST">
-                            <a role="button" class="nav-link active" onclick="document.getElementById('logout').submit();">Logout</a>
-                            @csrf
-                        </form>
+                    <form id="logout" action="{{ route('logout') }}" method="POST">
+                        <a role="button" class="nav-link active"
+                            onclick="document.getElementById('logout').submit();">Logout</a>
+                        @csrf
+                    </form>
                     @endguest
                 </div>
             </div>
@@ -63,7 +83,7 @@
     </div>
 
     <!-- footer -->
-    <div class="copyright py-4 text-center text-black">
+    <div class="footer copyright py-4 text-center text-black">
         <div class="container">
             <small>
                 Copyright - PawsPalace
