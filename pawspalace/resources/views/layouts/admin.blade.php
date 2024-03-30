@@ -50,6 +50,7 @@
             <ul class="nav flex-column">
                 <li><a href="{{ route('admin.home.index') }}" class="nav-link text-white">Home</a></li>
                 <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white"> Products</a></li>
+                <li><a href="{{ route('admin.appointment.index') }}" class="nav-link text-white"> Appointment</a></li>
                 <li>
                     <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">Go back to the home
                         page</a>
