@@ -14,7 +14,7 @@ class ReviewController extends Controller
 {
     public function save(Request $request): RedirectResponse
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login')->with('error', 'You must be logged in to perform this action');
         }
         try {
@@ -48,6 +48,7 @@ class ReviewController extends Controller
         $review->setRating($request->input('rating'));
 
         $review->save();
+
         return back()->with('success', 'Review created successfully');
     }
 
