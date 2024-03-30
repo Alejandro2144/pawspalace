@@ -12,17 +12,28 @@
     html,
     body {
         height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
     }
 
-    .content-grey {
-        min-height: calc(100vh - 56px);
+    .content-container {
+        flex: 1;
+        padding-bottom: 30px;
     }
 
     .footer {
-        position: absolute;
-        bottom: 0;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
         width: 100%;
-        /* Color del footer */
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
     }
     </style>
 </head>
@@ -74,17 +85,17 @@
 
     <header class="masthead bg-primary text-black text-center py-4">
         <div class="container d-flex align-items-center flex-column">
-            <h2>@yield('subtitle', 'PawsPalace')</h2>
+            <h2>@yield('subtitle', 'Welcome to PawsPalace')</h2>
         </div>
     </header>
 
-    <div class="container my-4">
+    <div class="container my-4 content-container">
         @yield('content')
     </div>
 
     <!-- footer -->
-    <div class="footer copyright py-4 text-center text-black">
-        <div class="container">
+    <div class="footer bg-secondary text-center text-white">
+        <div class="container py-4">
             <small>
                 Copyright - PawsPalace
             </small>

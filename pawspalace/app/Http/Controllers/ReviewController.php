@@ -4,47 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
 
 class ReviewController extends Controller
 {
-    public function create(int $productId): RedirectResponse|View
-    {
-        $product = Product::find($productId);
-
-        if (! $product) {
-            return redirect()->route('product.index')->with('error', 'Product not found.');
-        }
-
-        $existingReview = Review::where('product_id', $productId)->where('user_id', Auth::id())->first();
-        if ($existingReview) {
-            return redirect()->route('review.show', ['id' => $existingReview->getId()]);
-        }
-
-        $viewData = [
-            'subtitle' => 'Create Review',
-            'productId' => $productId,
-        ];
-
-        return view('review.create')->with('viewData', $viewData);
-    }
-
     public function save(Request $request): RedirectResponse
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to perform this action');
+        }
         try {
             $productId = $request->input('productId');
             $userId = Auth::id();
             Review::validate($request);
-            Review::create([
+            $review = Review::create([
                 'comment' => $request->input('comment'),
                 'rating' => $request->input('rating'),
                 'product_id' => $productId,
                 'user_id' => $userId,
             ]);
+
+            $product = Product::find($productId);
+            $product->reviews()->save($review);
+            $user = User::find($userId);
+            $user->reviews()->save($review);
 
             return back()->with('success', 'Review created successfully');
         } catch (ValidationException $e) {
@@ -52,33 +39,7 @@ class ReviewController extends Controller
         }
     }
 
-    public function show(int $id): View
-    {
-        $review = Review::with('product')->findOrFail($id);
-
-        $viewData = [
-            'subtitle' => 'Review Details',
-            'review' => $review,
-            'product' => $review->product,
-        ];
-
-        return view('review.show')->with('viewData', $viewData);
-    }
-
-    public function edit($id)
-    {
-        $review = Review::findOrFail($id);
-
-        $viewData = [
-            'subtitle' => 'Review Edit',
-            'title' => 'Admin Page - Edit Review - PawsPalace',
-            'review' => $review,
-        ];
-
-        return view('review.edit')->with('viewData', $viewData);
-    }
-
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         Review::validate($request);
 
@@ -87,11 +48,10 @@ class ReviewController extends Controller
         $review->setRating($request->input('rating'));
 
         $review->save();
-
-        return redirect()->route('review.show', ['id' => $id])->with('success', 'Review updated successfully');
+        return back()->with('success', 'Review created successfully');
     }
 
-    public function delete(int $id): View
+    public function delete(int $id): RedirectResponse
     {
         $review = Review::findOrFail($id);
 
@@ -103,20 +63,6 @@ class ReviewController extends Controller
             'products' => Product::all(),
         ];
 
-        return view('product.index')->with('viewData', $viewData);
-    }
-
-    public function list(int $productId): View
-    {
-        $product = Product::findOrFail($productId);
-        $reviews = Review::where('product_id', $productId)->get();
-
-        $viewData = [
-            'subtitle' => 'List of reviews for '.$product->getName(),
-            'reviews' => $reviews,
-            'product' => $product,
-        ];
-
-        return view('review.list')->with('viewData', $viewData);
+        return back()->with('viewData', $viewData);
     }
 }

@@ -26,6 +26,7 @@ class User extends Authenticatable
      * $this->attributes['created_at'] - timestamp - contains the user creation date
      * $this->attributes['updated_at'] - timestamp - contains the user update date
      * $this->orders - Collection - contains the associated orders
+     * $this->reviews - Collection - contains the associated reviews
      */
 
     /**
@@ -138,5 +139,20 @@ class User extends Authenticatable
     public function setOrders(Collection $orders): void
     {
         $this->orders = $orders;
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
     }
 }

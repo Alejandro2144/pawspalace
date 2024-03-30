@@ -50,13 +50,9 @@ Route::get('/appointment/{id}', 'App\Http\Controllers\AppointmentController@show
 Route::delete('/appointment/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.delete');
 
 // Review routes
-Route::get('reviews/create/{productId}', 'App\Http\Controllers\ReviewController@create')->name('review.create');
 Route::post('/review/save/', 'App\Http\Controllers\ReviewController@save')->name('review.save');
 Route::delete('/review/delete/{id}/', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
-Route::get('/review/{id}/', 'App\Http\Controllers\ReviewController@show')->name('review.show');
-Route::get('/review/{id}/edit', 'App\Http\Controllers\ReviewController@edit')->name('review.edit');
 Route::put('/review/{id}/update', 'App\Http\Controllers\ReviewController@update')->name('review.update');
-Route::get('/reviews/{product_id}', 'App\Http\Controllers\ReviewController@list')->name('review.list');
 
 // Authentication Controllers routes
 Auth::routes();

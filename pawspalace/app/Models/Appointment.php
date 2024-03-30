@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Appointment extends Model
 {
@@ -17,6 +18,7 @@ class Appointment extends Model
      * $this->attributes['price'] - int - contains the appointment price
      * $this->attributes['created_at'] - timestamp - contains the appointment created date
      * $this->attributes['updated_at'] - timestamp - contains the appointment update date
+     * this->order - Order - contains the associated Product
      */
     protected $fillable = ['duration', 'reason', 'status', 'modality', 'price'];
 
@@ -83,6 +85,21 @@ class Appointment extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function getOrder(): Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(Order $order): void
+    {
+        $this->order = $order;
     }
 
     public static function validate(Request $request): void

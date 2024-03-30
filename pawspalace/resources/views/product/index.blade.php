@@ -12,14 +12,6 @@
                 <a href="{{ route('product.show', ['id'=> $product->getId()]) }}"
                     class="btn bg-primary text-black">{{ $product->getName() }}</a>
             </div>
-            <div class="card-body text-center">
-                <a href="{{ route('review.create', ['productId' => $product->getId()]) }}"
-                    class="btn bg-primary text-black mb-2">Manage review</a>
-            </div>
-            <div class="card-body text-center">
-                <a href="{{ route('review.list', ['product_id' => $product->getId()]) }}"
-                    class="btn bg-primary text-black mb-2">Product reviews</a>
-            </div>
         </div>
     </div>
     @endforeach

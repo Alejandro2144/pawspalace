@@ -22,6 +22,7 @@ class Product extends Model
      * $this->attributes['created_at'] - string - contains the product creation timestamp
      * $this->attributes['updated_at'] - string - contains the product update timestamp
      * $this->items - Collection - contains the associated items
+     * $this->reviews - Collection - contains the associated reviews
      */
     protected $fillable = ['name', 'description', 'category', 'price', 'stock'];
 
@@ -123,6 +124,21 @@ class Product extends Model
     public function setItems(Collection $items): void
     {
         $this->items = $items;
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
     }
 
     public static function validateProduct(Request $request): void

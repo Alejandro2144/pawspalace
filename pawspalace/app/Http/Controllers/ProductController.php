@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -20,18 +21,23 @@ class ProductController extends Controller
         return view('product.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View|RedirectResponse
+    public function show(int $productId): View
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($productId);
+        $reviews = Review::where('product_id', $productId)->get();
 
         if (! $product) {
-            return redirect()->route('home.index');
+            return redirect()->route('product.index')->with('error', 'Product not found.');
         }
 
+        $existingReview = Review::where('product_id', $productId)->where('user_id', Auth::id())->first();
+
         $viewData = [
-            'title' => $product->getName().' - PawsPalace',
-            'subtitle' => $product->getName().' - Product Information',
+            'title' => 'Product Details - PawsPalace',
+            'subtitle' => 'Product Details',
             'product' => $product,
+            'reviews' => $reviews,
+            'existingReview' => $existingReview,
         ];
 
         return view('product.show')->with('viewData', $viewData);
