@@ -6,7 +6,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        Products in Cart
+        Products and Appointments in Cart
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped text-center">
@@ -34,19 +34,33 @@
                     </td>
                 </tr>
                 @endforeach
+                @foreach ($viewData["appointments"] as $appointment)
+                <tr>
+                    <td>{{ $appointment->getId() }}</td>
+                    <td>{{ $appointment->getModality() }}</td>
+                    <td>${{ $appointment->getPrice() }}</td>
+                    <td>1</td>
+                    <td>
+                        <form method="POST" action="{{ route('cart.remove', ['id'=> $appointment->getId()]) }}">
+                            @csrf
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
         <div class="row">
             <div class="text-end">
             <a class="btn btn-outline-secondary mb-2"><b>Total to pay:</b> ${{ $viewData["total"] }}</a>
-                @if (count($viewData["products"]) > 0)
+            @if (count($viewData["products"]) > 0 || count($viewData["appointments"]) > 0)
                 <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-black mb-2">Purchase</a>
                 <a href="{{ route('cart.delete') }}">
                     <button class="btn btn-danger mb-2">
-                        Remove all products from Cart
+                        Remove all products and appointments from Cart
                     </button>
                 </a>
-                @endif 
+            @endif  
             </div>
         </div>
     </div>

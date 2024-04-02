@@ -17,8 +17,10 @@ return new class extends Migration
             $table->integer('price');
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('appointment_id')->nullable();
+            $table->foreign('appointment_id')->references('id')->on('appointments');
             $table->timestamps();
         });
     }

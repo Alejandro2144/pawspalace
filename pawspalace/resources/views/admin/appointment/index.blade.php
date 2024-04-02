@@ -31,8 +31,12 @@
                     <input name="price" value="{{ old('price') }}" type="number" class="form-control">
                 </div>
                 <div class="col">
-                    <label class="form-label">Reason:</label>
-                    <input name="reason" value="{{ old('reason') }}" type="text" class="form-control">
+                    <label class="form-label">Date:</label>
+                    <input name="date" value="{{ old('date') }}" type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Time:</label>
+                    <input name="time" value="{{ old('time') }}" type="text" class="form-control">
                 </div>
                 <div class="col">
                     <label class="form-label">Modality:</label>
@@ -69,7 +73,7 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Reason</th>
+                    <th scope="col">Modality</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -78,7 +82,7 @@
                 @foreach ($viewData["appointments"] as $appointment)
                 <tr>
                     <td>{{ $appointment->getId() }}</td>
-                    <td>{{ $appointment->getReason() }}</td>
+                    <td>{{ $appointment->getModality() }}</td>
                     <td>
                         <a class="btn btn-primary"
                             href="{{route('admin.appointment.edit', ['id'=> $appointment->getId()])}}">Edit</a>
