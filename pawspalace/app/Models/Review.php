@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -70,12 +70,12 @@ class Review extends Model
             'product_id' => [
                 Rule::unique('reviews')->where(function ($query) use ($request) {
                     return $query->where('product_id', $request->input('product_id'));
-                })
+                }),
             ],
             'user_id' => [
                 Rule::exists('users', 'id')->where(function ($query) use ($request) {
                     return $query->where('id', $request->input('user_id'));
-                })
+                }),
             ],
         ]);
     }
