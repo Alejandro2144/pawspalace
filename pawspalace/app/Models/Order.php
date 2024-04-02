@@ -18,6 +18,7 @@ class Order extends Model
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
      * $this->items - Collection - contains the associated items
+     * $this->appointment - Collection - contains the associated appointment
      */
     public function getId()
     {
@@ -82,6 +83,21 @@ class Order extends Model
     public function setItems(Collection $items): void
     {
         $this->items = $items;
+    }
+
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function getAppointments(): Collection
+    {
+        return $this->appointment;
+    }
+
+    public function setAppointments(Collection $appointment): void
+    {
+        $this->appointment = $appointment;
     }
 
     public static function validate($request)

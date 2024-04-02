@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('category');
             $table->integer('price');
             $table->integer('stock');
+            $table->boolean('favorite')->default(false);
             $table->string('image');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -20,6 +20,8 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index')
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.about');
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
+Route::post('/product/favorite', 'App\Http\Controllers\ProductController@saveFavorite')->name('product.saveFavorite');
+Route::get('/favorites', 'App\Http\Controllers\ProductController@showFavorites')->name('product.showFavorites');
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
@@ -57,13 +59,9 @@ Route::get('/appointment/{id}', 'App\Http\Controllers\AppointmentController@show
 Route::delete('/appointment/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.delete');
 
 // Review routes
-Route::get('reviews/create/{productId}', 'App\Http\Controllers\ReviewController@create')->name('review.create');
 Route::post('/review/save/', 'App\Http\Controllers\ReviewController@save')->name('review.save');
 Route::delete('/review/delete/{id}/', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
-Route::get('/review/{id}/', 'App\Http\Controllers\ReviewController@show')->name('review.show');
-Route::get('/review/{id}/edit', 'App\Http\Controllers\ReviewController@edit')->name('review.edit');
 Route::put('/review/{id}/update', 'App\Http\Controllers\ReviewController@update')->name('review.update');
-Route::get('/reviews/{product_id}', 'App\Http\Controllers\ReviewController@list')->name('review.list');
 
 // Authentication Controllers routes
 Auth::routes();
