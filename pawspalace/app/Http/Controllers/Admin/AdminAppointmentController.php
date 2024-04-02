@@ -28,7 +28,8 @@ class AdminAppointmentController extends Controller
         $newAppointment->setDuration($request->input('duration'));
         $newAppointment->setPrice($request->input('price'));
         $newAppointment->setModality($request->input('modality'));
-        $newAppointment->setReason($request->input('reason'));
+        $newAppointment->setDate($request->input('date'));
+        $newAppointment->setTime($request->input('time'));
         $newAppointment->setImage('game.png');
         $newAppointment->save();
 
@@ -71,7 +72,8 @@ class AdminAppointmentController extends Controller
         $appointment->setDuration($request->input('duration'));
         $appointment->setPrice($request->input('price'));
         $appointment->setModality($request->input('modality'));
-        $appointment->setReason($request->input('reason'));
+        $appointment->setDate($request->input('date'));
+        $appointment->setTime($request->input('time'));
 
         if ($request->hasFile('image')) {
             $imageName = $appointment->getId().'.'.$request->file('image')->extension();

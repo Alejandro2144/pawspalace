@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
@@ -14,34 +15,60 @@ class CartController extends Controller
     {
         $total = 0;
         $productsInCart = [];
+        $appointmentsInCart = [];
 
         $productsInSession = $request->session()->get('products');
+        $appointmentsInSession = $request->session()->get('appointments');
+
         if ($productsInSession) {
             $productsInCart = Product::findMany(array_keys($productsInSession));
-            $total = Product::sumPricesByQuantities($productsInCart, $productsInSession);
+            $total += Product::sumPricesByQuantities($productsInCart, $productsInSession);
         }
 
-        $viewData = [];
-        $viewData['title'] = 'Cart - PawsPalace';
-        $viewData['subtitle'] = 'Shopping Cart';
-        $viewData['total'] = $total;
-        $viewData['products'] = $productsInCart;
+        if ($appointmentsInSession) {
+            $appointmentsInCart = Appointment::findMany(array_keys($appointmentsInSession));
+            foreach ($appointmentsInCart as $appointment) {
+                $total += $appointment->getPrice();
+            }
+        }
+
+        $viewData = [
+            'title' => 'Cart - PawsPalace',
+            'subtitle' => 'Shopping Cart',
+            'total' => $total,
+            'products' => $productsInCart,
+            'appointments' => $appointmentsInCart,
+        ];
 
         return view('cart.index')->with('viewData', $viewData);
     }
 
     public function add(Request $request, $id)
     {
-        $products = $request->session()->get('products');
-        $products[$id] = $request->input('quantity');
-        $request->session()->put('products', $products);
+        $product = Product::find($id);
+        $appointment = Appointment::find($id);
 
-        return redirect()->route('cart.index');
+        if ($product) {
+            $cart = $request->session()->get('products', []);
+            $cart[$id] = isset($cart[$id]) ? $cart[$id] + 1 : 1;
+            $request->session()->put('products', $cart);
+
+            return redirect()->route('cart.index');
+        } elseif ($appointment) {
+            $cart = $request->session()->get('appointments', []);
+            $cart[$id] = isset($cart[$id]) ? $cart[$id] + 1 : 1;
+            $request->session()->put('appointments', $cart);
+
+            return redirect()->route('cart.index');
+        } else {
+            return redirect()->route('cart.index')->with('error', 'Item not found.');
+        }
     }
 
     public function delete(Request $request)
     {
         $request->session()->forget('products');
+        $request->session()->forget('appointments');
 
         return back();
     }
@@ -49,53 +76,74 @@ class CartController extends Controller
     public function remove(Request $request, $id)
     {
         $products = $request->session()->get('products');
+        $appointments = $request->session()->get('appointments');
 
         unset($products[$id]);
+        unset($appointments[$id]);
 
         $request->session()->put('products', $products);
+        $request->session()->put('appointments', $appointments);
 
         return back();
     }
 
     public function purchase(Request $request)
     {
-        $productsInSession = $request->session()->get('products');
-        if ($productsInSession) {
-            $userId = Auth::user()->getId();
-            $order = new Order();
-            $order->setUserId($userId);
-            $order->setTotal(0);
-            $order->save();
+        $productsInSession = $request->session()->get('products', []);
+        $appointmentsInSession = $request->session()->get('appointments', []);
 
-            $total = 0;
-            $productsInCart = Product::findMany(array_keys($productsInSession));
-            foreach ($productsInCart as $product) {
-                $quantity = $productsInSession[$product->getId()];
+        $order = new Order();
+        $order->setUserId(Auth::id());
+        $order->setTotal(0);
+
+        $order->save();
+
+        $total = 0;
+
+        foreach ($productsInSession as $productId => $quantity) {
+            $product = Product::find($productId);
+            if ($product) {
+
                 $item = new Item();
                 $item->setQuantity($quantity);
                 $item->setPrice($product->getPrice());
-                $item->setProductId($product->getId());
+                $item->setProductId($productId);
                 $item->setOrderId($order->getId());
                 $item->save();
-                $total = $total + ($product->getPrice() * $quantity);
+
+                $total += $product->getPrice() * $quantity;
             }
-            $order->setTotal($total);
-            $order->save();
-
-            $newBalance = Auth::user()->getBalance() - $total;
-            Auth::user()->setBalance($newBalance);
-            Auth::user()->save();
-
-            $request->session()->forget('products');
-
-            $viewData = [];
-            $viewData['title'] = 'Purchase - PawsPalace';
-            $viewData['subtitle'] = 'Purchase Status';
-            $viewData['order'] = $order;
-
-            return view('cart.purchase')->with('viewData', $viewData);
-        } else {
-            return redirect()->route('cart.index');
         }
+
+        foreach ($appointmentsInSession as $appointmentId => $quantity) {
+            $appointment = Appointment::find($appointmentId);
+            if ($appointment) {
+                $item = new Item();
+                $item->setQuantity($quantity);
+                $item->setPrice($appointment->getPrice());
+                $item->setAppointmentId($appointmentId);
+                $item->setOrderId($order->getId());
+                $item->save();
+
+                $total += $appointment->getPrice() * $quantity;
+            }
+        }
+
+        $order->setTotal($total);
+        $order->save();
+
+        $user = Auth::user();
+        $user->setBalance($user->getBalance() - $total);
+        $user->save();
+
+        $request->session()->forget(['products', 'appointments']);
+
+        $viewData = [
+            'title' => 'Purchase - PawsPalace',
+            'subtitle' => 'Purchase Status',
+            'order' => $order,
+        ];
+
+        return view('cart.purchase')->with('viewData', $viewData);
     }
 }
