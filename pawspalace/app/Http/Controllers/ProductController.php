@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Review;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -21,7 +22,7 @@ class ProductController extends Controller
         return view('product.index')->with('viewData', $viewData);
     }
 
-    public function show(int $productId): View
+    public function show(string $productId): RedirectResponse|View
     {
         $product = Product::findOrFail($productId);
         $reviews = Review::where('product_id', $productId)->get();
