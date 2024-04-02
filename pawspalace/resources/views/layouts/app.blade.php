@@ -8,6 +8,34 @@
         crossorigin="anonymous" />
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <title>@yield('title', 'PawsPalace')</title>
+    <style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-container {
+        flex: 1;
+        padding-bottom: 30px;
+    }
+
+    .footer {
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    </style>
 </head>
 
 <body>
@@ -30,6 +58,7 @@
                     <a class="nav-link active" href="{{ route('login') }}">Login</a>
                     <a class="nav-link active" href="{{ route('register') }}">Register</a>
                     @else
+                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">My Favorites</a>
                     <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
@@ -43,22 +72,25 @@
     </nav>
     <header class="masthead bg-primary text-black text-center py-4">
         <div class="container d-flex align-items-center flex-column">
-            <h2>@yield('subtitle', 'PawsPalace')</h2>
+            <h2>@yield('subtitle', 'Welcome to PawsPalace')</h2>
         </div>
     </header>
 
-    <div class="container my-4">
+    <div class="container my-4 content-container">
         @yield('content')
     </div>
-    <div class="footer copyright py-4 text-center text-black">
-        <div class="container">
-            <small>
-                Copyright - PawsPalace
-            </small>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
+    <div class="footer bg-secondary text-center text-white">
+        <div class="container py-4">
+            <div class="footer copyright py-4 text-center text-black">
+                <div class="container">
+                    <small>
+                        Copyright - PawsPalace
+                    </small>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous">
+            </script>
 </body>
 
 </html>
