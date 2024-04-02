@@ -4,10 +4,21 @@
 @section('subtitle', $viewData["subtitle"])
 
 @section('content')
-<div class="row justify-content-end mb-3">
+<div class="row justify-content-between mb-3">
     <div class="col-md-4 col-lg-3">
-        <form class="form-inline my-2 my-lg-0 float-right">
-        <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search" value="{{ $viewData['query'] }}">
+        <form class="form-inline my-2 my-lg-0">
+            <select name="category" id="category" class="form-control mr-2">
+                <option value="">Filter by Category</option>
+                <option value="alimentos">Alimentos</option>
+                <option value="medicamentos">Medicamentos</option>
+                <option value="accesorios">Accesorios</option>
+            </select>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Filter</button>
+        </form>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <form class="form-inline my-2 my-lg-0">
+            <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search" value="{{ $viewData['query'] }}">
             <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
