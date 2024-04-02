@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->integer('duration');
-            $table->string('reason');
-            $table->string('status');
-            $table->string('modality');
+            $table->integer('quantity');
             $table->integer('price');
-            $table->string('image');
-            $table->unsignedBigInteger('order_id')->nullable(); // Establecer como nullable
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->foreign('order_id')->references('id')->on('orders');
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('appointment_id')->nullable();
+            $table->foreign('appointment_id')->references('id')->on('appointments');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('items');
     }
 };

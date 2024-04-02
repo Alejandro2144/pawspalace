@@ -18,6 +18,7 @@ class Item extends Model
      * $this->attributes['updated_at'] - timestamp - contains the item update date
      * $this->order - Order - contains the associated Order
      * $this->product - Product - contains the associated Product
+     * $this->appointment - Appointment - contains the associated Appointment
      */
     public function getId(): int
     {
@@ -94,7 +95,7 @@ class Item extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function getProduct(): Product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
@@ -102,6 +103,26 @@ class Item extends Model
     public function setProduct(Product $product): void
     {
         $this->product = $product;
+    }
+
+    public function setAppointmentId(int $appointmentId): void
+    {
+        $this->attributes['appointment_id'] = $appointmentId;
+    }
+
+    public function appointment(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class);
+    }
+
+    public function getAppointment(): ?Appointment
+    {
+        return $this->appointment;
+    }
+
+    public function setAppointment(Appointment $appointment): void
+    {
+        $this->appointment = $appointment;
     }
 
     public static function validate($request)

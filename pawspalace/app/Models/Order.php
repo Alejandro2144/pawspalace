@@ -25,6 +25,18 @@ class Order extends Model
         return $this->attributes['id'];
     }
 
+    protected $appointments_total;
+
+    public function getAppointmentsTotal(): string
+    {
+        return $this->appointments_total;
+    }
+
+    public function setAppointmentsTotal(string $total): void
+    {
+        $this->appointments_total = $total;
+    }
+
     public function getTotal(): string
     {
         return $this->attributes['total'];

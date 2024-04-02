@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class Appointment extends Model
@@ -12,16 +14,18 @@ class Appointment extends Model
      * APPOINTMENT ATTRIBUTES
      * $this->attributes['id'] - string - contains the appointment primary key (id)
      * $this->attributes['duration'] - int - contains appointment duration
-     * $this->attributes['reason'] - string - contains appointment reason
      * $this->attributes['status'] - string - contains appointment status
      * $this->attributes['modality'] - string - contains appointment modality
      * $this->attributes['price'] - int - contains the appointment price
+     * $this->attributes['date'] - string - contains the available date for appointments
+     * this->attributes['time'] - string - contains the available time for appointments
      * $this->attributes['image'] - string - contains the appointment image
+     * $this->items - Collection - contains the associated items
      * $this->attributes['created_at'] - timestamp - contains the appointment created date
      * $this->attributes['updated_at'] - timestamp - contains the appointment update date
      * this->order - Order - contains the associated Product
      */
-    protected $fillable = ['duration', 'reason', 'status', 'modality', 'price'];
+    protected $fillable = ['duration', 'date', 'time', 'status', 'modality', 'price'];
 
     public function getId(): string
     {
@@ -38,14 +42,24 @@ class Appointment extends Model
         $this->attributes['duration'] = $duration;
     }
 
-    public function getReason(): string
+    public function getDate(): string
     {
-        return $this->attributes['reason'];
+        return $this->attributes['date'];
     }
 
-    public function setReason(string $reason): void
+    public function setDate(string $date): void
     {
-        $this->attributes['reason'] = $reason;
+        $this->attributes['date'] = $date;
+    }
+
+    public function getTime(): string
+    {
+        return $this->attributes['time'];
+    }
+
+    public function setTime(string $time): void
+    {
+        $this->attributes['time'] = $time;
     }
 
     public function getStatus(): string
@@ -88,6 +102,21 @@ class Appointment extends Model
         $this->attributes['image'] = $image;
     }
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function setItems(Collection $items): void
+    {
+        $this->items = $items;
+    }
+
     public function getCreatedAt(): string
     {
         return $this->attributes['created_at'];
@@ -117,7 +146,8 @@ class Appointment extends Model
     {
         $request->validate([
             'duration' => 'required|integer|min:10',
-            'reason' => 'required|string|max:255',
+            'date' => 'required|string|max:255',
+            'time' => 'required|string|max:255',
             'status' => 'required|string',
             'modality' => 'required|string',
             'price' => 'required|numeric|min:10',

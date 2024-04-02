@@ -41,8 +41,13 @@
                         class="form-control">
                 </div>
                 <div class="col">
-                    <label class="form-label">Reason:</label>
-                    <input name="reason" value="{{ $viewData['appointment']->getReason() }}" type="text"
+                    <label class="form-label">Date:</label>
+                    <input name="date" value="{{ $viewData['appointment']->getDate() }}" type="text"
+                        class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Time:</label>
+                    <input name="time" value="{{ $viewData['appointment']->getTime() }}" type="text"
                         class="form-control">
                 </div>
                 <div class="col">

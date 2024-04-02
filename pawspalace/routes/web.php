@@ -50,13 +50,11 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.ind
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+Route::post('/cart/add-appointment/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add-appointment');
 
 //Appointment routes
-Route::get('/appointment/create', 'App\Http\Controllers\AppointmentController@create')->name('appointment.create');
-Route::post('/appointment/save', 'App\Http\Controllers\AppointmentController@save')->name('appointment.save');
+Route::post('/appointment/store', 'App\Http\Controllers\AppointmentController@store')->name('appointment.store');
 Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->name('appointment.index');
-Route::get('/appointment/{id}', 'App\Http\Controllers\AppointmentController@show')->name('appointment.show');
-Route::delete('/appointment/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.delete');
 
 // Review routes
 Route::post('/review/save/', 'App\Http\Controllers\ReviewController@save')->name('review.save');

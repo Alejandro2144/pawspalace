@@ -1,21 +1,45 @@
 @extends('layouts.app')
-
-@section('title', $viewData['title'])
-@section('subtitle', $viewData['subtitle'])
+@section('title', $viewData["title"])
+@section('subtitle', $viewData["subtitle"])
 
 @section('content')
 <div class="row">
-    @foreach ($viewData['appointments'] as $appointment)
-    <div class="col-md-4 col-lg-3 mb-2">
+    <div class="col-md-12">
         <div class="card">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/e1dd5c19815449.562e0bbe27e94.png" class="card-img-top img-card">
+            <div class="card-header">
+                Available Appointments
+            </div>
             <div class="card-body">
-                <p>{{ $appointment->getReason() }}</p>
-                <p>{{ $appointment->getModality() }}</p>
-                <a href="{{ route('appointment.show', ['id'=> $appointment->getId()]) }}" class="btn bg-primary text-black">show details</a>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Duration</th>
+                                <th>Modality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($viewData["appointments"] as $appointment)
+                            <tr>
+                                <td>{{ $appointment->getDate() }}</td>
+                                <td>{{ $appointment->getTime() }}</td>
+                                <td>{{ $appointment->getDuration() }}</td>
+                                <td>{{ $appointment->getModality() }}</td>
+                                <td>
+                                    <form method="POST" action="{{ route('cart.add', ['id'=> $appointment->getId()]) }}">
+                                        @csrf
+                                        <button class="btn btn-primary">Schedule</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    @endforeach
 </div>
 @endsection

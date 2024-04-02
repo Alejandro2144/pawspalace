@@ -11,16 +11,21 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-
         $viewData = [
             'title' => 'Products - PawsPalace',
             'subtitle' => 'List of products',
-            'products' => Product::all(),
         ];
 
-        return view('product.index')->with('viewData', $viewData);
+        $query = $request->query('query');
+
+        $products = Product::where('name', 'LIKE', "%$query%")->get();
+
+        $viewData['query'] = $query;
+        $viewData['products'] = $products;
+
+        return view('product.index', ['viewData' => $viewData]);
     }
 
     public function show(string $productId): RedirectResponse|View

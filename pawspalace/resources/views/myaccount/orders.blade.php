@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Item ID</th>
-                            <th scope="col">Product Name</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                         </tr>
@@ -26,9 +26,15 @@
                             <tr>
                                 <td>{{ $item->getId() }}</td>
                                 <td>
-                                    <a class="link-success" href="{{ route('product.show', ['id'=> $item->getProduct()->getId()]) }}">
-                                        {{ $item->getProduct()->getName() }}
-                                    </a>
+                                    @if ($item->getProduct())
+                                        <a class="link-success" href="{{ route('product.show', ['id'=> $item->getProduct()->getId()]) }}">
+                                            {{ $item->getProduct()->getName() }}
+                                        </a>
+                                    @elseif ($item->getAppointment())
+                                        {{ $item->getAppointment()->getModality() }}
+                                    @else
+                                        Item not found
+                                    @endif
                                 </td>
                                 <td>${{ $item->getPrice() }}</td>
                                 <td>{{ $item->getQuantity() }}</td>
