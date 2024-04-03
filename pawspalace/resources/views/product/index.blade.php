@@ -23,20 +23,18 @@
         </form>
     </div>
 </div>
-
 <div class="row">
     @foreach ($viewData["products"] as $product)
     <div class="col-md-4 col-lg-3">
-        <div class="card">
-            <img src="{{ asset('/storage/'.$product->getImage()) }}" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">{{ $product->getName() }}</h5>
-                <div class="text-center mb-2">
-                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="btn btn-primary btn-sm">View Product</a>
+        <div class="card h-100">
+            <img src="{{ asset('/storage/'.$product->getImage()) }}" class="card-img-top" style="height: 200px;">
+            <div class="card-body d-flex flex-column justify-content-between align-items-center">
+                <div class="text-center mb-auto">
+                    <h5 class="card-title">{{ $product->getName() }}</h5>
                 </div>
-                <div class="text-center">
-                    <a href="{{ route('review.create', ['productId' => $product->getId()]) }}" class="btn btn-primary btn-sm">Manage Review</a>
-                    <a href="{{ route('review.list', ['product_id' => $product->getId()]) }}" class="btn btn-primary btn-sm">Product Reviews</a>
+                <div>
+                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}"
+                        class="btn bg-primary text-black">View Product</a>
                 </div>
             </div>
         </div>

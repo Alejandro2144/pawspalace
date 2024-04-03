@@ -1,18 +1,23 @@
 /* Background colors */
 .bg-secondary {
-    background-color: #87C4FF !important;
+    background-color: #A0153E !important;
 }
 
 .bg-primary {
-    background-color: #f3ecde !important;
+    background-color: #FFEBB2 !important;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #EEEEEE; 
 }
 
 /* Copyright section */
 .copyright {
-    background-color: #87C4FF;
-    text-align: center;
     font-size: 18px;
-  }
+}
 
 /* Navigation */
 nav {
@@ -20,8 +25,8 @@ nav {
 }
 
 .navbar-nav a.nav-link {
-    color: black !important;
-  }
+    color: #F8F6E3 !important;
+}
 
 .navbar-brand-custom {
     color: black !important;
@@ -31,4 +36,8 @@ nav {
 .img-card {
     height: 18vw;
     object-fit: cover;
+}
+
+.navbar-nav a.nav-link:hover {
+    color: #90D26D !important;
 }

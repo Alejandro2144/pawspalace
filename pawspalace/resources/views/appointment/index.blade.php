@@ -28,7 +28,8 @@
                                 <td>{{ $appointment->getDuration() }}</td>
                                 <td>{{ $appointment->getModality() }}</td>
                                 <td>
-                                    <form method="POST" action="{{ route('cart.add', ['id'=> $appointment->getId()]) }}">
+                                    <form method="POST"
+                                        action="{{ route('cart.add.appointment', ['id'=> $appointment->getId()]) }}">
                                         @csrf
                                         <button class="btn btn-primary">Schedule</button>
                                     </form>

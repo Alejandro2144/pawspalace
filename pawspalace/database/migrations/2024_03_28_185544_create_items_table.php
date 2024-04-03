@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer('quantity');
             $table->integer('price');
-            $table->unsignedBigInteger('order_id')->nullable();
+            $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->unsignedBigInteger('appointment_id')->nullable();
-            $table->foreign('appointment_id')->references('id')->on('appointments');
+            $table->unsignedBigInteger('product_id')->nullable(); // Clave foránea para Product
+            $table->foreign('product_id')->references('id')->on('products'); // Clave foránea para Product
+            $table->unsignedBigInteger('appointment_id')->nullable(); // Clave foránea para Appointment
+            $table->foreign('appointment_id')->references('id')->on('appointments'); // Clave foránea para Appointment
             $table->timestamps();
         });
     }
