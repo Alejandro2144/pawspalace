@@ -7,41 +7,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous" />
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title', 'PawsPalace')</title>
     <style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-    }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .content-container {
-        flex: 1;
-        padding-bottom: 30px;
-    }
+        .content-container {
+            flex: 1;
+            padding-bottom: 30px;
+        }
 
-    .footer {
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-    }
-
-    .body {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
+        .body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
         <div class="container">
-            <a class="navbar-brand navbar-brand-custom" href="{{ route('home.index') }}">PawsPalace</a>
+            <a class="navbar-brand navbar-brand-custom" href="{{ route('home.index') }}">
+                <img src="{{ asset('/img/logo.png') }}" alt="PawsPalace Logo" style="max-height: 150px; width: auto;" >
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -79,7 +76,7 @@
     <div class="container my-4 content-container">
         @yield('content')
     </div>
-    <div class="footer bg-secondary text-center text-white">
+    <div class="footer">
         <div class="container py-4">
             <div class="footer copyright py-4 text-center text-black">
                 <div class="container">
@@ -91,6 +88,8 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous">
             </script>
+        </div>
+    </div>
 </body>
 
 </html>
