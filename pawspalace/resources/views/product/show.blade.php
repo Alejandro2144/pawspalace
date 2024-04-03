@@ -46,7 +46,7 @@
                 <p class="card-text text-center">
                     {{ $viewData["product"]->getDescription() }}
                 </p>
-                <form method="POST" action="{{ route('cart.add', ['id'=> $viewData['product']->getId()]) }}">
+                <form method="POST" action="{{ route('cart.add.product', ['id'=> $viewData['product']->getId()]) }}">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="col-auto">

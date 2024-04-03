@@ -48,9 +48,9 @@ Route::middleware('admin')->group(function () {
 // Shopping Cart routes
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
-Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::post('/cart/add-product/{id}', 'App\Http\Controllers\CartController@addProduct')->name('cart.add.product');
+Route::post('/cart/add-appointment/{id}', 'App\Http\Controllers\CartController@addAppointment')->name('cart.add.appointment');
 Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
-Route::post('/cart/add-appointment/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add-appointment');
 
 //Appointment routes
 Route::post('/appointment/store', 'App\Http\Controllers\AppointmentController@store')->name('appointment.store');
