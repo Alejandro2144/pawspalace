@@ -19,7 +19,7 @@
                 <div class="col">
                 <label class="form-label">Status:</label>
                     <select name="status" class="form-control">
-                        <option value="">Select modality</option>
+                        <option value="">Select Status</option>
                         <option value="Pendiente" {{ old('status') == 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
                         <option value="Confirmada" {{ old('status') == 'Confirmada' ? 'selected' : '' }}>Confirmada</option>
                         <option value="Cancelada" {{ old('status') == 'Cancelada' ? 'selected' : '' }}>Cancelada</option>
@@ -48,16 +48,9 @@
                     </select>
                 </div>
                 <div class="col">
-                    <label class="form-label">Duration:</label>
+                    <label class="form-label">Duration (minutes):</label>
                     <input name="duration" value="{{ old('duration') }}" type="number" class="form-control">
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label class="form-label">Image:</label>
-                    <input class="form-control" type="file" name="image">
-                </div>
-                <div class="col"></div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

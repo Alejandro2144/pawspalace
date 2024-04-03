@@ -41,3 +41,45 @@ nav {
 .navbar-nav a.nav-link:hover {
     color: #90D26D !important;
 }
+
+.header-cream {
+    background-color: #A0153E !important;
+    color: white;
+}
+
+.table td,
+.table th {
+    text-align: center;
+}
+
+.custom-button {
+    background-color: #87C4FF; 
+    color: black;
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    cursor: pointer; 
+}
+
+.custom-button:hover {
+    background-color: #90D26D; 
+}
+
+.heart-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.heart-btn.clicked .heart-icon {
+    color: #dc3545;
+}
+
+.user-reviews-bg {
+    background-color: #A0153E;
+    color: white; 
+    text-align: center;
+    font-weight: bold;
+}

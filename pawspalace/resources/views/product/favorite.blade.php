@@ -14,9 +14,9 @@
         <div class="col-md-3 mb-4">
             <div class="card">
                 <img src="{{ asset('/storage/' . $favorite->image) }}" class="card-img-top" alt="{{ $favorite->name }}">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">{{ $favorite->name }}</h5>
-                    <a href="{{ route('product.show', ['id' => $favorite->id]) }}" class="btn btn-primary">View
+                    <a href="{{ route('product.show', ['id' => $favorite->id]) }}" class="custom-button">View
                         Details</a>
                 </div>
             </div>
