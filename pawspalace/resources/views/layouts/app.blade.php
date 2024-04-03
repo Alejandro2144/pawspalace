@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8" />
@@ -8,27 +8,27 @@
         crossorigin="anonymous" />
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <title>@yield('title', 'PawsPalace')</title>
+    <title>@yield('title', __('PawsPalace'))</title>
     <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .content-container {
-            flex: 1;
-            padding-bottom: 30px;
-        }
+    .content-container {
+        flex: 1;
+        padding-bottom: 30px;
+    }
 
-        .body {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
+    .body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
     </style>
 </head>
 
@@ -36,7 +36,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
         <div class="container">
             <a class="navbar-brand navbar-brand-custom" href="{{ route('home.index') }}">
-                <img src="{{ asset('/img/logo.png') }}" alt="PawsPalace Logo" style="max-height: 150px; width: auto;" >
+                <img src="{{ asset('/img/logo.png') }}" alt="{{ __('PawsPalace Logo') }}"
+                    style="max-height: 150px; width: auto;">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -45,21 +46,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
-                    <a class="nav-link active" href="{{ route('home.about') }}">About</a>
-                    <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
-                    <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
-                    <a class="nav-link active" href="{{ route('appointment.index') }}">Schedule Appointment</a>
+                    <a class="nav-link active" href="{{ route('home.index') }}">{{ __('Home') }}</a>
+                    <a class="nav-link active" href="{{ route('home.about') }}">{{ __('About') }}</a>
+                    <a class="nav-link active" href="{{ route('product.index') }}">{{ __('Products') }}</a>
+                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('Cart') }}</a>
+                    <a class="nav-link active"
+                        href="{{ route('appointment.index') }}">{{ __('Schedule Appointment') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
-                    <a class="nav-link active" href="{{ route('login') }}">Login</a>
-                    <a class="nav-link active" href="{{ route('register') }}">Register</a>
+                    <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link active" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @else
-                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">My Favorites</a>
-                    <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
+                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
+                    <a class="nav-link active" href="{{ route('myaccount.orders') }}">{{ __('My Orders') }}</a>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
-                            onclick="document.getElementById('logout').submit();">Logout</a>
+                            onclick="document.getElementById('logout').submit();">{{ __('Logout') }}</a>
                         @csrf
                     </form>
                     @endguest
@@ -69,7 +71,7 @@
     </nav>
     <header class="masthead bg-primary text-black text-center py-4">
         <div class="container d-flex align-items-center flex-column">
-            <h2>@yield('subtitle', 'Welcome to PawsPalace')</h2>
+            <h2>@yield('subtitle', __('Welcome to PawsPalace'))</h2>
         </div>
     </header>
 
@@ -81,7 +83,7 @@
             <div class="footer copyright py-4 text-center text-black">
                 <div class="container">
                     <small>
-                        Copyright - PawsPalace
+                        {{ __('Copyright - PawsPalace') }}
                     </small>
                 </div>
             </div>

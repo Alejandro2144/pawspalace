@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $viewData["title"])
-@section('subtitle', $viewData["subtitle"])
+@section('title', __('Product Details - PawsPalace'))
+@section('subtitle', __('Product Details'))
 
 @section('content')
 <!DOCTYPE html>
@@ -39,13 +39,13 @@
                     <div class="row justify-content-center">
                         <div class="col-auto">
                             <div class="input-group">
-                                <div class="input-group-text user-reviews-bg">Quantity</div>
+                                <div class="input-group-text user-reviews-bg">{{ __('Quantity') }}</div>
                                 <input type="number" min="1" max="10" class="form-control quantity-input"
                                     name="quantity" value="1">
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button class="custom-button" type="submit">Add to cart</button>
+                            <button class="custom-button" type="submit">{{ __('Add to cart') }}</button>
                         </div>
                     </div>
                 </form>
@@ -61,20 +61,20 @@
                 </form>
                 <hr>
                 @if (!$viewData["existingReview"])
-                <h4 class="text-center">Create Review</h4>
+                <h4 class="text-center">{{ __('Create Review') }}</h4>
                 @else
-                <h4 class="text-center">Edit Your Review</h4>
+                <h4 class="text-center">{{ __('Edit Your Review') }}</h4>
                 @endif
 
                 @if (!$viewData["existingReview"])
                 <form action="{{ route('review.save') }}" method="POST">
                     @csrf
                     <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
-                    <input type="text" class="form-control mb-2" placeholder="Enter Comment" name="comment"
+                    <input type="text" class="form-control mb-2" placeholder="{{ __('Enter Comment') }}" name="comment"
                         value="{{ old('comment') }}" />
-                    <input type="number" min="1" max="5" class="form-control mb-2" placeholder="Enter Rating (1-5)"
-                        name="rating" value="{{ old('rating') }}" />
-                    <input type="submit" class="custom-button" value="Create Review">
+                    <input type="number" min="1" max="5" class="form-control mb-2"
+                        placeholder="{{ __('Enter Rating (1-5)') }}" name="rating" value="{{ old('rating') }}" />
+                    <input type="submit" class="custom-button" value="{{ __('Create Review') }}">
                 </form>
                 @else
                 <form method="POST"
@@ -83,16 +83,17 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label class="form-label">Comment:</label>
-                        <input type="text" class="form-control" placeholder="Enter Comment" name="comment"
+                        <label class="form-label">{{ __('Comment') }}:</label>
+                        <input type="text" class="form-control" placeholder="{{ __('Enter Comment') }}" name="comment"
                             value="{{ $viewData['existingReview']->getComment() }}" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Rating:</label>
-                        <input type="number" min="1" max="5" class="form-control" placeholder="Enter Rating (1-5)"
-                            name="rating" value="{{ $viewData['existingReview']->getRating() }}" />
+                        <label class="form-label">{{ __('Rating') }}:</label>
+                        <input type="number" min="1" max="5" class="form-control"
+                            placeholder="{{ __('Enter Rating (1-5)') }}" name="rating"
+                            value="{{ $viewData['existingReview']->getRating() }}" />
                     </div>
-                    <button type="submit" class="custom-button">Edit Review</button>
+                    <button type="submit" class="custom-button">{{ __('Edit Review') }}</button>
                 </form>
                 @endif
             </div>
@@ -100,16 +101,16 @@
     </div>
     <div class="col-md-6">
         <div class="card" style="max-width: 600px;">
-            <div class="card-header user-reviews-bg"><strong>User Reviews</strong></div>
+            <div class="card-header user-reviews-bg"><strong>{{ __('User Reviews') }}</strong></div>
             <div class="card-body">
                 <div class="row row-cols-1 g-4">
                     @foreach ($viewData["reviews"] as $review)
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">User: {{ $review->user->name }}</h6>
-                                <p class="card-text">Rating: {{ $review->getRating() }}</p>
-                                <p class="card-text">Comment: {{ $review->getComment() }}</p>
+                                <h6 class="card-title">{{ __('User') }}: {{ $review->user->name }}</h6>
+                                <p class="card-text">{{ __('Rating') }}: {{ $review->getRating() }}</p>
+                                <p class="card-text">{{ __('Comment') }}: {{ $review->getComment() }}</p>
                             </div>
                         </div>
                     </div>

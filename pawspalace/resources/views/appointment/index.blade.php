@@ -1,23 +1,23 @@
 @extends('layouts.app')
-@section('title', $viewData["title"])
-@section('subtitle', $viewData["subtitle"])
+@section('title', __('Appointment - PawsPalace'))
+@section('subtitle', __('Schedule appointmens'))
 
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-center header-cream">
-            <strong>Available Appointments</strong>
+                <strong>{{ __('Available Appointments') }}</strong>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Duration</th>
-                                <th>Modality</th>
+                                <th>{{ __('Date') }}</th>
+                                <th>{{ __('Time') }}</th>
+                                <th>{{ __('Duration') }}</th>
+                                <th>{{ __('Modality') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,7 +31,7 @@
                                     <form method="POST"
                                         action="{{ route('cart.add.appointment', ['id'=> $appointment->getId()]) }}">
                                         @csrf
-                                        <button class="custom-button">Schedule</button>
+                                        <button class="custom-button">{{ __('Schedule') }}</button>
                                     </form>
                                 </td>
                             </tr>

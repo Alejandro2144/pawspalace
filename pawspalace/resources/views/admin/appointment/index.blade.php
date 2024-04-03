@@ -3,7 +3,7 @@
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
-        Create Appointments
+        {{ __('Create Appointments') }}
     </div>
     <div class="card-body">
         @if($errors->any())
@@ -17,58 +17,63 @@
             @csrf
             <div class="row mb-3">
                 <div class="col">
-                <label class="form-label">Status:</label>
+                    <label class="form-label">{{ __('Status') }}:</label>
                     <select name="status" class="form-control">
-                        <option value="">Select Status</option>
-                        <option value="Pendiente" {{ old('status') == 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
-                        <option value="Confirmada" {{ old('status') == 'Confirmada' ? 'selected' : '' }}>Confirmada</option>
-                        <option value="Cancelada" {{ old('status') == 'Cancelada' ? 'selected' : '' }}>Cancelada</option>
-                        <option value="Completada" {{ old('status') == 'Completada' ? 'selected' : '' }}>Completada</option>
+                        <option value="">{{ __('Select Status') }}</option>
+                        <option value="Pendiente" {{ old('status') == 'Pendiente' ? 'selected' : '' }}>
+                            {{ __('Pending') }}</option>
+                        <option value="Confirmada" {{ old('status') == 'Confirmada' ? 'selected' : '' }}>
+                            {{ __('Confirmed') }}</option>
+                        <option value="Cancelada" {{ old('status') == 'Cancelada' ? 'selected' : '' }}>
+                            {{ __('Canceled') }}</option>
+                        <option value="Completada" {{ old('status') == 'Completada' ? 'selected' : '' }}>
+                            {{ __('Completed') }}</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label class="form-label">Price:</label>
+                    <label class="form-label">{{ __('Price') }}:</label>
                     <input name="price" value="{{ old('price') }}" type="number" class="form-control">
                 </div>
                 <div class="col">
-                    <label class="form-label">Date:</label>
+                    <label class="form-label">{{ __('Date') }}:</label>
                     <input name="date" value="{{ old('date') }}" type="text" class="form-control">
                 </div>
                 <div class="col">
-                    <label class="form-label">Time:</label>
+                    <label class="form-label">{{ __('Time') }}:</label>
                     <input name="time" value="{{ old('time') }}" type="text" class="form-control">
                 </div>
                 <div class="col">
-                    <label class="form-label">Modality:</label>
+                    <label class="form-label">{{ __('Modality') }}:</label>
                     <select name="modality" class="form-control">
-                        <option value="">Select modality</option>
-                        <option value="Virtual" {{ old('modality') == 'Virtual' ? 'selected' : '' }}>Virtual
+                        <option value="">{{ __('Select modality') }}</option>
+                        <option value="Virtual" {{ old('modality') == 'Virtual' ? 'selected' : '' }}>{{ __('Virtual') }}
                         </option>
-                        <option value="At home" {{ old('modality') == 'At home' ? 'selected' : '' }}>At home</option>
+                        <option value="At home" {{ old('modality') == 'At home' ? 'selected' : '' }}>{{ __('At home') }}
+                        </option>
                     </select>
                 </div>
                 <div class="col">
-                    <label class="form-label">Duration (minutes):</label>
+                    <label class="form-label">{{ __('Duration (minutes)') }}:</label>
                     <input name="duration" value="{{ old('duration') }}" type="number" class="form-control">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
         </form>
     </div>
 </div>
 
 <div class="card">
     <div class="card-header">
-        Manage Appointments
+        {{ __('Manage Appointments') }}
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Modality</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">{{ __('ID') }}</th>
+                    <th scope="col">{{ __('Modality') }}</th>
+                    <th scope="col">{{ __('Edit') }}</th>
+                    <th scope="col">{{ __('Delete') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +83,7 @@
                     <td>{{ $appointment->getModality() }}</td>
                     <td>
                         <a class="btn btn-primary"
-                            href="{{route('admin.appointment.edit', ['id'=> $appointment->getId()])}}">Edit</a>
+                            href="{{route('admin.appointment.edit', ['id'=> $appointment->getId()])}}">{{ __('Edit') }}</a>
                     </td>
                     <td>
                         <form action="{{ route('admin.appointment.delete', $appointment->getId())}}" method="POST">
