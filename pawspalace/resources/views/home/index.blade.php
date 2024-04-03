@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center mb-4">Highlighted Products by Review Ratings</h2>
+            <h2 class="text-center mb-4">{{ __('Highlighted Products by Review Ratings') }}</h2>
 
             <div class="row">
                 @foreach ($viewData['highlightedProducts'] as $product)
@@ -14,9 +14,10 @@
                             alt="{{ $product->name }}" style="max-width: 50%;">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $product->getName() }}</h5>
-                            <p class="card-text ">Average Rating: {{ number_format($product->average_rating, 1) }}</p>
-                            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="custom-button">View
-                                Details</a>
+                            <p class="card-text ">{{ __('Average Rating') }}:
+                                {{ number_format($product->average_rating, 1) }}</p>
+                            <a href="{{ route('product.show', ['id' => $product->id]) }}"
+                                class="custom-button">{{ __('View Details') }}</a>
                         </div>
                     </div>
                 </div>

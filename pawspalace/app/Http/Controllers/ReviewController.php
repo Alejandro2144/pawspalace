@@ -51,19 +51,4 @@ class ReviewController extends Controller
 
         return back()->with('success', 'Review created successfully');
     }
-
-    public function delete(int $id): RedirectResponse
-    {
-        $review = Review::findOrFail($id);
-
-        $review->delete();
-
-        $viewData = [
-            'title' => 'Products - PawsPalace',
-            'subtitle' => 'List of products',
-            'products' => Product::all(),
-        ];
-
-        return back()->with('viewData', $viewData);
-    }
 }
