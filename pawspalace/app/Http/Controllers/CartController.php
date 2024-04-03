@@ -43,10 +43,9 @@ class CartController extends Controller
         return view('cart.index')->with('viewData', $viewData);
     }
 
-    public function add(Request $request, $id)
+    public function addProduct(Request $request, $id)
     {
         $product = Product::find($id);
-        $appointment = Appointment::find($id);
 
         if ($product) {
             $cart = $request->session()->get('products', []);
@@ -54,14 +53,23 @@ class CartController extends Controller
             $request->session()->put('products', $cart);
 
             return redirect()->route('cart.index');
-        } elseif ($appointment) {
+        } else {
+            return redirect()->route('cart.index')->with('error', 'Product not found.');
+        }
+    }
+
+    public function addAppointment(Request $request, $id)
+    {
+        $appointment = Appointment::find($id);
+
+        if ($appointment) {
             $cart = $request->session()->get('appointments', []);
             $cart[$id] = isset($cart[$id]) ? $cart[$id] + 1 : 1;
             $request->session()->put('appointments', $cart);
 
             return redirect()->route('cart.index');
         } else {
-            return redirect()->route('cart.index')->with('error', 'Item not found.');
+            return redirect()->route('cart.index')->with('error', 'Appointment not found.');
         }
     }
 

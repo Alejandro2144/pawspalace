@@ -20,6 +20,8 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index')
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.about');
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
+Route::post('/product/favorite', 'App\Http\Controllers\ProductController@saveFavorite')->name('product.saveFavorite');
+Route::get('/favorites', 'App\Http\Controllers\ProductController@showFavorites')->name('product.showFavorites');
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
@@ -46,22 +48,18 @@ Route::middleware('admin')->group(function () {
 // Shopping Cart routes
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
-Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::post('/cart/add-product/{id}', 'App\Http\Controllers\CartController@addProduct')->name('cart.add.product');
+Route::post('/cart/add-appointment/{id}', 'App\Http\Controllers\CartController@addAppointment')->name('cart.add.appointment');
 Route::post('/cart/remove/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
-Route::post('/cart/add-appointment/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add-appointment');
 
 //Appointment routes
 Route::post('/appointment/store', 'App\Http\Controllers\AppointmentController@store')->name('appointment.store');
 Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->name('appointment.index');
 
 // Review routes
-Route::get('reviews/create/{productId}', 'App\Http\Controllers\ReviewController@create')->name('review.create');
 Route::post('/review/save/', 'App\Http\Controllers\ReviewController@save')->name('review.save');
 Route::delete('/review/delete/{id}/', 'App\Http\Controllers\ReviewController@delete')->name('review.delete');
-Route::get('/review/{id}/', 'App\Http\Controllers\ReviewController@show')->name('review.show');
-Route::get('/review/{id}/edit', 'App\Http\Controllers\ReviewController@edit')->name('review.edit');
 Route::put('/review/{id}/update', 'App\Http\Controllers\ReviewController@update')->name('review.update');
-Route::get('/reviews/{product_id}', 'App\Http\Controllers\ReviewController@list')->name('review.list');
 
 // Authentication Controllers routes
 Auth::routes();
