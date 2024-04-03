@@ -31,7 +31,8 @@ class HomeController extends Controller
         $viewData = [];
         $viewData['title'] = 'About us - PawsPalace';
         $viewData['subtitle'] = 'About us';
-        $viewData['description'] = 'This is an about page ...';
+        $viewData['description'] = 'PawsPalace es una página web dedicada a la venta de productos para mascotas,
+        con una sección de consultas y asesorías personalizadas con veterinarios de la tienda. ';
         $viewData['author'] = 'Developed by: PawsPalace Team';
 
         return view('home.about')->with('viewData', $viewData);
