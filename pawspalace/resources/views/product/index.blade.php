@@ -27,7 +27,7 @@
     @foreach ($viewData["products"] as $product)
     <div class="col-md-4 col-lg-3">
         <div class="card h-100">
-            <img src="{{ asset('/storage/'.$product->getImage()) }}" class="card-img-top" style="height: 200px;">
+            <img src="{{ asset('/storage/'.$product->getImage()) }}" class="card-img-top" style="width: 100%; height: 100%; object-fit: contain; max-height: 180px;">
             <div class="card-body d-flex flex-column justify-content-between align-items-center">
                 <div class="text-center mb-auto">
                     <h5 class="card-title">{{ $product->getName() }}</h5>
