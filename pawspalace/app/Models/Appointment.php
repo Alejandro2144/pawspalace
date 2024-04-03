@@ -23,7 +23,7 @@ class Appointment extends Model
      * $this->items - Collection - contains the associated items
      * $this->attributes['created_at'] - timestamp - contains the appointment created date
      * $this->attributes['updated_at'] - timestamp - contains the appointment update date
-     * this->order - Order - contains the associated Product
+     * this->order - Order - contains the associated Order
      */
     protected $fillable = ['duration', 'date', 'time', 'status', 'modality', 'price'];
 
