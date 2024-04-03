@@ -18,7 +18,7 @@
                 method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete Review</button>
+                <button type="submit" class="custom-button">Delete Review</button>
             </form>
         </div>
     </div>

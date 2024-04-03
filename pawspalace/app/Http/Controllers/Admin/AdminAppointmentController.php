@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AdminAppointmentController extends Controller
 {
@@ -32,16 +31,6 @@ class AdminAppointmentController extends Controller
         $newAppointment->setTime($request->input('time'));
         $newAppointment->setImage('game.png');
         $newAppointment->save();
-
-        if ($request->hasFile('image')) {
-            $imageName = $newAppointment->getId().'.'.$request->file('image')->extension();
-            Storage::disk('public')->put(
-                $imageName,
-                file_get_contents($request->file('image')->getRealPath())
-            );
-            $newAppointment->setImage($imageName);
-            $newAppointment->save();
-        }
 
         return back();
     }
@@ -74,15 +63,6 @@ class AdminAppointmentController extends Controller
         $appointment->setModality($request->input('modality'));
         $appointment->setDate($request->input('date'));
         $appointment->setTime($request->input('time'));
-
-        if ($request->hasFile('image')) {
-            $imageName = $appointment->getId().'.'.$request->file('image')->extension();
-            Storage::disk('public')->put(
-                $imageName,
-                file_get_contents($request->file('image')->getRealPath())
-            );
-            $appointment->setImage($imageName);
-        }
 
         $appointment->save();
 

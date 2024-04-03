@@ -19,10 +19,22 @@ class ProductController extends Controller
         ];
 
         $query = $request->query('query');
+        $category = $request->query('category');
 
-        $products = Product::where('name', 'LIKE', "%$query%")->get();
+        $productsQuery = Product::query();
+
+        if ($query) {
+            $productsQuery->where('name', 'LIKE', "%$query%");
+        }
+
+        if ($category) {
+            $productsQuery->where('category', $category);
+        }
+
+        $products = $productsQuery->get();
 
         $viewData['query'] = $query;
+        $viewData['category'] = $category;
         $viewData['products'] = $products;
 
         return view('product.index', ['viewData' => $viewData]);

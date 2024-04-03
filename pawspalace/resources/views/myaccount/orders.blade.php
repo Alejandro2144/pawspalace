@@ -6,8 +6,8 @@
 @section('content')
     @forelse ($viewData["orders"] as $order)
         <div class="card mb-4">
-            <div class="card-header">
-                Order #{{ $order->getId() }}
+            <div class="card-header user-reviews-bg">
+            <strong>Order #{{ $order->getId() }}</strong>
             </div>
             <div class="card-body">
                 <b>Date:</b> {{ $order->getCreatedAt() }}<br />

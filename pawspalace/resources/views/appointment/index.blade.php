@@ -6,8 +6,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                Available Appointments
+            <div class="card-header d-flex align-items-center justify-content-center header-cream">
+            <strong>Available Appointments</strong>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -31,7 +31,7 @@
                                     <form method="POST"
                                         action="{{ route('cart.add.appointment', ['id'=> $appointment->getId()]) }}">
                                         @csrf
-                                        <button class="btn btn-primary">Schedule</button>
+                                        <button class="custom-button">Schedule</button>
                                     </form>
                                 </td>
                             </tr>

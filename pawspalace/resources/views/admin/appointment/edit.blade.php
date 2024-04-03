@@ -51,7 +51,7 @@
                         class="form-control">
                 </div>
                 <div class="col">
-                    <label class="form-label">Duration:</label>
+                    <label class="form-label">Duration (minutes):</label>
                     <input name="duration" value="{{ $viewData['appointment']->getDuration() }}" type="number"
                         class="form-control">
                 </div>
@@ -67,13 +67,6 @@
                             At home</option>
                     </select>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label class="form-label">Image:</label>
-                    <input class="form-control" type="file" name="image">
-                </div>
-                <div class="col">&nbsp;</div>
             </div>
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>
