@@ -124,6 +124,7 @@ class Item extends Model
     {
         $this->appointment = $appointment;
     }
+    
 
     public static function validate($request)
     {
