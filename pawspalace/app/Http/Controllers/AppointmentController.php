@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\View\View;
 
 class AppointmentController extends Controller
@@ -12,8 +13,8 @@ class AppointmentController extends Controller
     public function index(): View
     {
         $viewData = [
-            'title' => 'Appointment - PawsPalace',
-            'subtitle' => 'Schedule appointmens',
+            'title' => Lang::get('controllers.appointment_title'),
+            'subtitle' => Lang::get('controllers.appointment_subtitle'),
             'appointments' => Appointment::all(),
         ];
 

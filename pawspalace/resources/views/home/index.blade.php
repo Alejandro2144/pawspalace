@@ -16,8 +16,8 @@
                             <h5 class="card-title">{{ $product->getName() }}</h5>
                             <p class="card-text ">{{ __('Average Rating') }}:
                                 {{ number_format($product->average_rating, 1) }}</p>
-                            <a href="{{ route('product.show', ['id' => $product->id]) }}"
-                                class="custom-button">{{ __('View Details') }}</a>
+                            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="custom-button"
+                                style="text-decoration: none;">{{ __('View Details') }}</a>
                         </div>
                     </div>
                 </div>

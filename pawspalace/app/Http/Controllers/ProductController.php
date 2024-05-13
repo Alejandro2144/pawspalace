@@ -7,6 +7,7 @@ use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -14,8 +15,8 @@ class ProductController extends Controller
     public function index(Request $request): View
     {
         $viewData = [
-            'title' => 'Products - PawsPalace',
-            'subtitle' => 'List of products',
+            'title' => Lang::get('controllers.product_index_title'),
+            'subtitle' => Lang::get('controllers.product_index_subtitle'),
         ];
 
         $query = $request->query('query');
@@ -46,14 +47,14 @@ class ProductController extends Controller
         $reviews = Review::where('product_id', $productId)->get();
 
         if (! $product) {
-            return redirect()->route('product.index')->with('error', 'Product not found.');
+            return redirect()->route('product.index')->with('error', Lang::get('controllers.product_show_product_not_found'));
         }
 
         $existingReview = Review::where('product_id', $productId)->where('user_id', Auth::id())->first();
 
         $viewData = [
-            'title' => 'Product Details - PawsPalace',
-            'subtitle' => 'Product Details',
+            'title' => Lang::get('controllers.product_show_title'),
+            'subtitle' => Lang::get('controllers.product_show_subtitle'),
             'product' => $product,
             'reviews' => $reviews,
             'existingReview' => $existingReview,
@@ -64,32 +65,24 @@ class ProductController extends Controller
 
     public function saveFavorite(Request $request): RedirectResponse
     {
-        if (! Auth::check()) {
-            return redirect()->route('login')->with('error', 'You must be logged in to mark a product as favorite.');
-        }
-
-        $productId = $request->input('productId');
         $user = Auth::user();
-
-        $product = Product::findOrFail($productId);
-
-        if ($product->getFavorite()) {
-            $product->setFavorite(false);
-            $product->user_id = null;
-        } else {
-            $product->setFavorite(true);
-            $product->user_id = $user->id;
+    
+        if (! $user) {
+            return redirect()->route('login')->with('error', Lang::get('controllers.product_save_favorite_login'));
         }
-
-        $product->save();
-
-        return redirect()->back()->with('success', 'Product marked as favorite.');
-    }
+    
+        $productId = $request->input('productId');
+        $product = Product::findOrFail($productId);
+    
+        $user->favoriteProducts()->toggle($product->id);
+    
+        return redirect()->back()->with('success', Lang::get('controllers.product_save_favorite_success'));
+    }   
 
     public function showFavorites(): View
     {
         if (! Auth()->check()) {
-            return redirect()->route('login')->with('error', 'You must be logged in to view your favorite products.');
+            return redirect()->route('login')->with('error', Lang::get('controllers.product_show_favorites_login'));
         }
 
         $user = auth()->user();

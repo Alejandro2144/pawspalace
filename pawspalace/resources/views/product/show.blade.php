@@ -4,7 +4,6 @@
 @section('subtitle', __('Product Details'))
 
 @section('content')
-<!DOCTYPE html>
 
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -54,7 +53,7 @@
                     <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
                     <div class="col-auto mt-1 text-center">
                         <button type="submit"
-                            class="btn heart-btn {{ $viewData['product']->getFavorite() ? 'clicked' : '' }}">
+                            class="btn heart-btn {{ $viewData['product']->favoritedByUsers()->where('user_id', auth()->id())->exists() ? 'clicked' : '' }}">
                             <i class="fas fa-heart heart-icon fa-lg"></i>
                         </button>
                     </div>
@@ -108,7 +107,7 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">{{ __('User') }}: {{ $review->user->name }}</h6>
+                                <h6 class="card-title">{{ __('User') }}: {{ $review->user->getName() }}</h6>
                                 <p class="card-text">{{ __('Rating') }}: {{ $review->getRating() }}</p>
                                 <p class="card-text">{{ __('Comment') }}: {{ $review->getComment() }}</p>
                             </div>
