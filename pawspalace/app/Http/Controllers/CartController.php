@@ -60,12 +60,16 @@ class CartController extends Controller
 
     public function addAppointment(Request $request, $id)
     {
-        $appointment = Appointment::find($id);
+         $appointment = Appointment::find($id);
 
         if ($appointment) {
             $cart = $request->session()->get('appointments', []);
+
             $cart[$id] = isset($cart[$id]) ? $cart[$id] + 1 : 1;
             $request->session()->put('appointments', $cart);
+
+            $appointment->setStatus('confirmada');
+            $appointment->save();
 
             return redirect()->route('cart.index');
         } else {
@@ -75,23 +79,40 @@ class CartController extends Controller
 
     public function delete(Request $request)
     {
-        $request->session()->forget('products');
-        $request->session()->forget('appointments');
+        $appointments = $request->session()->get('appointments', []);
+
+        foreach ($appointments as $appointmentId => $quantity) {
+            $appointment = Appointment::find($appointmentId);
+            if ($appointment) {
+                $appointment->setStatus('pendiente');
+                $appointment->save();
+            }
+        }
+
+        $request->session()->forget(['products', 'appointments']);
 
         return back();
     }
 
     public function remove(Request $request, $id)
     {
-        $products = $request->session()->get('products');
-        $appointments = $request->session()->get('appointments');
 
-        unset($products[$id]);
-        unset($appointments[$id]);
+        $products = $request->session()->get('products', []);
+        $appointments = $request->session()->get('appointments', []);
 
-        $request->session()->put('products', $products);
-        $request->session()->put('appointments', $appointments);
-
+        if (isset($appointments[$id])) {
+            $appointment = Appointment::find($id);
+            if ($appointment) {
+                $appointment->setStatus('pendiente');
+                $appointment->save();
+            }
+            unset($appointments[$id]);
+            $request->session()->put('appointments', $appointments);
+        }
+        if (isset($products[$id])) {
+            unset($products[$id]);
+            $request->session()->put('products', $products);
+        }
         return back();
     }
 
