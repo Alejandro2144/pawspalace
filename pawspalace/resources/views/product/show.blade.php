@@ -8,14 +8,7 @@
 
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const heartBtn = document.querySelector('.heart-btn');
-        heartBtn.addEventListener('click', function() {
-            heartBtn.classList.toggle('clicked');
-        });
-    });
-    </script>
+    <script src="pawspalace\resources\js\heart.js"></script>
 </head>
 
 <div class="row">
@@ -54,7 +47,7 @@
                     <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
                     <div class="col-auto mt-1 text-center">
                         <button type="submit"
-                            class="btn heart-btn {{ $viewData['product']->getFavorite() ? 'clicked' : '' }}">
+                            class="btn heart-btn {{ $viewData['product']->favoritedByUsers()->where('user_id', auth()->id())->exists() ? 'clicked' : '' }}">
                             <i class="fas fa-heart heart-icon fa-lg"></i>
                         </button>
                     </div>
@@ -81,7 +74,7 @@
                     action="{{ route('review.update', ['id' => $viewData['existingReview']->getId()]) }}">
                     @csrf
                     @method('PUT')
-
+                    <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
                     <div class="mb-3">
                         <label class="form-label">{{ __('Comment') }}:</label>
                         <input type="text" class="form-control" placeholder="{{ __('Enter Comment') }}" name="comment"

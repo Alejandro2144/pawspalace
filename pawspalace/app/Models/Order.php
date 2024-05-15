@@ -20,7 +20,6 @@ class Order extends Model
      * $this->items - Collection - contains the associated items
      * $this->appointments - Collection - contains the associated total appointments
      */
-
     public function getId()
     {
         return $this->attributes['id'];
