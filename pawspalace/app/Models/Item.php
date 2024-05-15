@@ -20,6 +20,7 @@ class Item extends Model
      * $this->product - Product - contains the associated Product
      * $this->appointment - Appointment - contains the associated Appointment
      */
+    
     public function getId(): int
     {
         return $this->attributes['id'];
