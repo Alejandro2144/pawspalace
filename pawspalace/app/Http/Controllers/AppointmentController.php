@@ -11,32 +11,33 @@ use Illuminate\View\View;
 class AppointmentController extends Controller
 {
     public function index(): View
-    {
-        $viewData = [
-            'title' => Lang::get('controllers.appointment_title'),
-            'subtitle' => Lang::get('controllers.appointment_subtitle'),
-            'appointments' => Appointment::all(),
-        ];
+{
+    $pendingAppointments = Appointment::where('status', 'pendiente')->get();
 
-        return view('appointment.index')->with('viewData', $viewData);
-    }
+    $viewData = [
+        'title' => Lang::get('controllers.appointment_title'),
+        'subtitle' => Lang::get('controllers.appointment_subtitle'),
+        'appointments' => $pendingAppointments,
+    ];
+
+    return view('appointment.index')->with('viewData', $viewData);
+}
 
     public function store(Request $request): RedirectResponse
-    {
+{
+    Appointment::validate($request);
 
-        Appointment::validate($request);
+    $appointment = Appointment::create([
+        'duration' => $request->input('duration'),
+        'date' => $request->input('date'),
+        'time' => $request->input('time'),
+        'status' => 'pendiente',
+        'modality' => $request->input('modality'),
+        'price' => $request->input('price'),
+    ]);
 
-        $appointment = Appointment::create([
-            'duration' => $request->input('duration'),
-            'date' => $request->input('date'),
-            'time' => $request->input('time'),
-            'status' => $request->input('status'),
-            'modality' => $request->input('modality'),
-            'price' => $request->input('price'),
-        ]);
+    return redirect()->route('cart.index');
+}
 
-        $request->session()->put('appointments', [$appointment->getId() => 1]);
 
-        return redirect()->route('cart.index');
-    }
 }
