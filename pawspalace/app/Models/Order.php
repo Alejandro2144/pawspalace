@@ -18,23 +18,12 @@ class Order extends Model
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
      * $this->items - Collection - contains the associated items
-     * $this->appointment - Collection - contains the associated appointment
+     * $this->appointments - Collection - contains the associated total appointments
      */
+
     public function getId()
     {
         return $this->attributes['id'];
-    }
-
-    protected $appointments_total;
-
-    public function getAppointmentsTotal(): string
-    {
-        return $this->appointments_total;
-    }
-
-    public function setAppointmentsTotal(string $total): void
-    {
-        $this->appointments_total = $total;
     }
 
     public function getTotal(): string
@@ -97,19 +86,16 @@ class Order extends Model
         $this->items = $items;
     }
 
-    public function appointments(): HasMany
+    protected $appointments_total;
+
+    public function getAppointmentsTotal(): string
     {
-        return $this->hasMany(Item::class);
+        return $this->appointments_total;
     }
 
-    public function getAppointments(): Collection
+    public function setAppointmentsTotal(string $total): void
     {
-        return $this->appointment;
-    }
-
-    public function setAppointments(Collection $appointment): void
-    {
-        $this->appointment = $appointment;
+        $this->appointments_total = $total;
     }
 
     public static function validate($request)
