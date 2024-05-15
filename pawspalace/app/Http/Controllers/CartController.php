@@ -108,6 +108,7 @@ class CartController extends Controller
             }
             unset($appointments[$id]);
             $request->session()->put('appointments', $appointments);
+            return back();
         }
         if (isset($products[$id])) {
             unset($products[$id]);

@@ -2,8 +2,14 @@
 
 @section('title', __('Products - PawsPalace'))
 @section('subtitle', __('List of products'))
-
 @section('content')
+
+<div class="breadcrumb">
+    <ul>
+        <li><a href="{{ route('home.index') }}">Inicio</a></li>
+        <li>Productos</li>
+    </ul>
+</div>
 <div class="row justify-content-between mb-3">
     <div class="col-md-4 col-lg-3">
         <form class="form-inline my-2 my-lg-0">

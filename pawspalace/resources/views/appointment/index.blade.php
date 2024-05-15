@@ -18,6 +18,7 @@
                                 <th>{{ __('Time') }}</th>
                                 <th>{{ __('Duration') }}</th>
                                 <th>{{ __('Modality') }}</th>
+                                <th>{{ __('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>

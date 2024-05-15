@@ -18,6 +18,15 @@
     </script>
 </head>
 
+<div class="breadcrumb">
+    <ul>
+        @foreach ($viewData['breadcrumbs'] as $breadcrumb)
+            <li><a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['nombre'] }}</a></li>
+        @endforeach
+        <li>{{ __('Detalles del Producto') }}</li>
+    </ul>
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="card mb-3">

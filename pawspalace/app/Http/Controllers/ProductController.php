@@ -49,6 +49,12 @@ class ProductController extends Controller
             return redirect()->route('product.index')->with('error', 'Product not found.');
         }
 
+        $breadcrumbs = [
+            ['nombre' => 'Inicio', 'url' => route('home.index')],
+            ['nombre' => 'Productos', 'url' => route('product.index')],
+            ['nombre' => $product->getName(), 'url' => route('product.show', ['id' => $productId])],
+        ];
+
         $existingReview = Review::where('product_id', $productId)->where('user_id', Auth::id())->first();
 
         $viewData = [
@@ -57,6 +63,7 @@ class ProductController extends Controller
             'product' => $product,
             'reviews' => $reviews,
             'existingReview' => $existingReview,
+            'breadcrumbs' => $breadcrumbs,
         ];
 
         return view('product.show')->with('viewData', $viewData);
