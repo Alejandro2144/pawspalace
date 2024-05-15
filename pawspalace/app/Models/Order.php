@@ -18,7 +18,7 @@ class Order extends Model
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated User
      * $this->items - Collection - contains the associated items
-     * $this->items - Collection - contains the associated total appointments
+     * $this->appointments - Collection - contains the associated total appointments
      */
 
     public function getId()
