@@ -64,6 +64,7 @@
                             onclick="document.getElementById('logout').submit();">{{ __('Logout') }}</a>
                         @csrf
                     </form>
+                    <span class="nav-link active">{{ __('Balance') }}: ${{ Auth::user()->balance }}</span>
                     @endguest
                 </div>
             </div>

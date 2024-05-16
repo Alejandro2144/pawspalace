@@ -1,4 +1,3 @@
-/* Background colors */
 .bg-secondary {
     background-color: #A0153E !important;
 }
@@ -14,12 +13,10 @@
     background-color: #EEEEEE; 
 }
 
-/* Copyright section */
 .copyright {
     font-size: 18px;
 }
 
-/* Navigation */
 nav {
     font-weight: 700;
 }
@@ -32,7 +29,6 @@ nav {
     color: black !important;
 }
 
-/* Image card */
 .img-card {
     height: 18vw;
     object-fit: cover;
@@ -83,3 +79,49 @@ nav {
     text-align: center;
     font-weight: bold;
 }
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.breadcrumb ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb li:not(:last-child):after {
+    content: "›";
+    margin: 0 5px;
+    color: #777;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.breadcrumb a:hover {
+    color: #A0153E;
+}
+
+.card-header {
+    background-color: #A0153E;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table thead th {
+    background-color: #FFEBB2; 
+    color: black; 
+}
+
+
