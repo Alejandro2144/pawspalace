@@ -10,25 +10,29 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title', __('PawsPalace'))</title>
     <style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-    }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .content-container {
-        flex: 1;
-        padding-bottom: 30px;
-    }
+        .content-container {
+            flex: 1;
+            padding-bottom: 30px;
+        }
 
-    .body {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
+        .body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        #map {
+            height: 400px; 
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -81,6 +85,7 @@
     </div>
     <div class="footer">
         <div class="container py-4">
+            <div id="map"></div> 
             <div class="footer copyright py-4 text-center text-black">
                 <div class="container">
                     <a class="nav-link active" href="{{ route('home.about') }}">{{ __('About') }}</a>
@@ -90,7 +95,23 @@
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-                crossorigin="anonymous">
+                crossorigin="anonymous"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm-9MB7QD10hS4Msn-9m0oGCk6XvOYrko"></script>
+            <script>
+                function initMap() {
+                    var mapOptions = {
+                        center: { lat: 6.192683696746826, lng: -75.56332397460938 },
+                        zoom: 14
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    var marker = new google.maps.Marker({
+                        position: { lat: 6.192683696746826, lng: -75.56332397460938 },
+                        map: map,
+                        title: 'My location'
+                    });
+                }
+
+                window.onload = initMap;
             </script>
         </div>
     </div>
