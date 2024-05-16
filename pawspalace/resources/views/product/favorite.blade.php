@@ -4,6 +4,15 @@
 @section('subtitle', __('Your Favorite Products'))
 
 @section('content')
+
+<div class="breadcrumb">
+        <ul>
+            <li><a href="{{ route('home.index') }}">{{ __('Inicio') }}</a></li>
+            <li><a href="{{ route('product.showFavorites') }}">{{ __('Favoritos') }}</a></li>
+            <li>{{ __('Favorites') }}</li>
+        </ul>
+    </div>
+
 <div class="container">
 
     @if ($favorites->isEmpty())
@@ -17,7 +26,7 @@
                     style="width: 100%; height: 100%; object-fit: contain; max-height: 180px;">
                 <div class="card-body text-center ">
                     <h5 class="card-title">{{ $favorite->getName() }}</h5><br>
-                    <a href="{{ route('product.show', ['id' => $favorite->id]) }}" class="custom-button"
+                    <a href="{{ route('product.show', ['id' => $favorite->getId()]) }}" class="custom-button"
                         style="text-decoration: none;">{{ __('View Details') }}</a>
                 </div>
             </div>

@@ -7,15 +7,17 @@
 
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const heartBtn = document.querySelector('.heart-btn');
-        heartBtn.addEventListener('click', function() {
-            heartBtn.classList.toggle('clicked');
-        });
-    });
-    </script>
+    <script src="pawspalace\resources\js\heart.js"></script>
 </head>
+
+<div class="breadcrumb">
+    <ul>
+        @foreach ($viewData['breadcrumbs'] as $breadcrumb)
+            <li><a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['nombre'] }}</a></li>
+        @endforeach
+        <li>{{ __('Detalles del Producto') }}</li>
+    </ul>
+</div>
 
 <div class="row">
     <div class="col-md-6">
@@ -80,7 +82,7 @@
                     action="{{ route('review.update', ['id' => $viewData['existingReview']->getId()]) }}">
                     @csrf
                     @method('PUT')
-
+                    <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
                     <div class="mb-3">
                         <label class="form-label">{{ __('Comment') }}:</label>
                         <input type="text" class="form-control" placeholder="{{ __('Enter Comment') }}" name="comment"

@@ -23,7 +23,6 @@ class Appointment extends Model
      * $this->attributes['updated_at'] - timestamp - contains the appointment update date
      * $this->items - Collection - contains the associated items
      */
-
     protected $fillable = ['duration', 'date', 'time', 'status', 'modality', 'price'];
 
     public function getId(): string

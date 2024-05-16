@@ -21,6 +21,12 @@ class ReviewController extends Controller
         try {
             $productId = $request->input('productId');
             $userId = Auth::id();
+
+            $existingReview = Review::where('user_id', $userId)->where('product_id', $productId)->exists();
+            if ($existingReview) {
+                return back()->with('error', 'You have already reviewed this product');
+            }
+
             Review::validate($request);
             $review = Review::create([
                 'comment' => $request->input('comment'),
@@ -44,7 +50,8 @@ class ReviewController extends Controller
     {
         Review::validate($request);
 
-        $review = Review::findOrFail($id);
+        $productId = $request->input('productId');
+        $review = Product::findOrFail($productId)->reviews()->findOrFail($id);
         $review->setComment($request->input('comment'));
         $review->setRating($request->input('rating'));
 
