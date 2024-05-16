@@ -4,7 +4,6 @@
 @section('subtitle', __('Product Details'))
 
 @section('content')
-<!DOCTYPE html>
 
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -110,7 +109,7 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">{{ __('User') }}: {{ $review->user->name }}</h6>
+                                <h6 class="card-title">{{ __('User') }}: {{ $review->user->getName() }}</h6>
                                 <p class="card-text">{{ __('Rating') }}: {{ $review->getRating() }}</p>
                                 <p class="card-text">{{ __('Comment') }}: {{ $review->getComment() }}</p>
                             </div>

@@ -47,11 +47,10 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" href="{{ route('home.index') }}">{{ __('Home') }}</a>
-                    <a class="nav-link active" href="{{ route('home.about') }}">{{ __('About') }}</a>
                     <a class="nav-link active" href="{{ route('product.index') }}">{{ __('Products') }}</a>
-                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('Cart') }}</a>
                     <a class="nav-link active"
                         href="{{ route('appointment.index') }}">{{ __('Schedule Appointment') }}</a>
+                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('Cart') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -59,6 +58,7 @@
                     @else
                     <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
                     <a class="nav-link active" href="{{ route('myaccount.orders') }}">{{ __('My Orders') }}</a>
+                    <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
                             onclick="document.getElementById('logout').submit();">{{ __('Logout') }}</a>
@@ -83,6 +83,7 @@
         <div class="container py-4">
             <div class="footer copyright py-4 text-center text-black">
                 <div class="container">
+                    <a class="nav-link active" href="{{ route('home.about') }}">{{ __('About') }}</a>
                     <small>
                         {{ __('Copyright - PawsPalace') }}
                     </small>

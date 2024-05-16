@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\ValidationException;
 
 class ReviewController extends Controller
@@ -15,7 +16,7 @@ class ReviewController extends Controller
     public function save(Request $request): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login')->with('error', 'You must be logged in to perform this action');
+            return redirect()->route('login')->with('error', Lang::get('controllers.review_save_login_error'));
         }
         try {
             $productId = $request->input('productId');
@@ -39,7 +40,7 @@ class ReviewController extends Controller
             $user = User::find($userId);
             $user->reviews()->save($review);
 
-            return back()->with('success', 'Review created successfully');
+            return back()->with('success', Lang::get('controllers.review_save_success'));
         } catch (ValidationException $e) {
             return back()->withErrors($e->errors());
         }
@@ -56,6 +57,6 @@ class ReviewController extends Controller
 
         $review->save();
 
-        return back()->with('success', 'Review created successfully');
+        return back()->with('success', Lang::get('controllers.review_update_success'));
     }
 }

@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class AdminAppointmentController extends Controller
 {
     public function index()
     {
         $viewData = [
-            'title' => 'Admin Page - Appointment - PawsPalace',
+            'title' => Lang::get('controllers.admin_appointment.index_title'),
             'appointments' => Appointment::all(),
         ];
 
@@ -45,7 +46,7 @@ class AdminAppointmentController extends Controller
     public function edit($id)
     {
         $viewData = [
-            'title' => 'Admin Page - Edit Appointment - PawsPalace',
+            'title' => Lang::get('controllers.admin_appointment.edit_title'),
             'appointment' => Appointment::findOrFail($id),
         ];
 
