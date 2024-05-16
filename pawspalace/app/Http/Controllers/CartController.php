@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class CartController extends Controller
 {
@@ -33,8 +34,8 @@ class CartController extends Controller
         }
 
         $viewData = [
-            'title' => 'Cart - PawsPalace',
-            'subtitle' => 'Shopping Cart',
+            'title' => Lang::get('controllers.cart_index_title'),
+            'subtitle' => Lang::get('controllers.cart_index_subtitle'),
             'total' => $total,
             'products' => $productsInCart,
             'appointments' => $appointmentsInCart,
@@ -54,13 +55,13 @@ class CartController extends Controller
 
             return redirect()->route('cart.index');
         } else {
-            return redirect()->route('cart.index')->with('error', 'Product not found.');
+            return redirect()->route('cart.index')->with('error', Lang::get('controllers.cart_product_not_found'));
         }
     }
 
     public function addAppointment(Request $request, $id)
     {
-         $appointment = Appointment::find($id);
+        $appointment = Appointment::find($id);
 
         if ($appointment) {
             $cart = $request->session()->get('appointments', []);
@@ -73,7 +74,7 @@ class CartController extends Controller
 
             return redirect()->route('cart.index');
         } else {
-            return redirect()->route('cart.index')->with('error', 'Appointment not found.');
+            return redirect()->route('cart.index')->with('error', Lang::get('controllers.cart_appointment_not_found'));
         }
     }
 
@@ -114,6 +115,7 @@ class CartController extends Controller
             unset($products[$id]);
             $request->session()->put('products', $products);
         }
+
         return back();
     }
 
@@ -169,8 +171,8 @@ class CartController extends Controller
         $request->session()->forget(['products', 'appointments']);
 
         $viewData = [
-            'title' => 'Purchase - PawsPalace',
-            'subtitle' => 'Purchase Status',
+            'title' => Lang::get('controllers.cart_purchase_title'),
+            'subtitle' => Lang::get('controllers.cart_purchase_subtitle'),
             'order' => $order,
         ];
 

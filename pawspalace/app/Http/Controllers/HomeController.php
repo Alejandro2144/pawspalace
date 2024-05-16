@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -19,7 +20,7 @@ class HomeController extends Controller
             ->get();
 
         $viewData = [
-            'title' => 'Home Page - PawsPalace',
+            'title' => Lang::get('controllers.home_index_title'),
             'highlightedProducts' => $highlightedProducts,
         ];
 
@@ -29,11 +30,10 @@ class HomeController extends Controller
     public function about(): View
     {
         $viewData = [];
-        $viewData['title'] = 'About us - PawsPalace';
-        $viewData['subtitle'] = 'About us';
-        $viewData['description'] = 'PawsPalace es una página web dedicada a la venta de productos para mascotas,
-        con una sección de consultas y asesorías personalizadas con veterinarios de la tienda. ';
-        $viewData['author'] = 'Developed by: PawsPalace Team';
+        $viewData['title'] = Lang::get('controllers.home_about_title');
+        $viewData['subtitle'] = Lang::get('controllers.home_about_subtitle');
+        $viewData['description'] = Lang::get('controllers.home_about_description');
+        $viewData['author'] = Lang::get('controllers.home_about_author');
 
         return view('home.about')->with('viewData', $viewData);
     }

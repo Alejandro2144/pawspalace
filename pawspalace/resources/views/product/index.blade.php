@@ -40,9 +40,9 @@
                 <div class="text-center mb-auto">
                     <h5 class="card-title">{{ $product->getName() }}</h5>
                 </div>
-                <div>
-                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}"
-                        class="custom-button">{{ __('View Product') }}</a>
+                <div><br>
+                    <a href="{{ route('product.show', ['id'=> $product->getId()]) }}" class="custom-button"
+                        style="text-decoration: none;">{{ __('View Product') }}</a>
                 </div>
             </div>
         </div>

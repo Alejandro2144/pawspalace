@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 
 class MyAccountController extends Controller
 {
-    public function orders()
+    public function orders(): View
     {
         $viewData = [];
-        $viewData['title'] = 'My Orders - PawsPalace';
-        $viewData['subtitle'] = 'My Orders';
+        $viewData['title'] = Lang::get('controllers.myaccount_orders_title');
+        $viewData['subtitle'] = Lang::get('controllers.myaccount_orders_subtitle');
 
         $orders = Order::with('items.product')->where('user_id', Auth::id())->get();
 

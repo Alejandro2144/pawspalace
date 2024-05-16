@@ -19,7 +19,6 @@ class Order extends Model
      * $this->user - User - contains the associated User
      * $this->items - Collection - contains the associated items
      */
-
     public function getId()
     {
         return $this->attributes['id'];
