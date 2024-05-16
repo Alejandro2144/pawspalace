@@ -9,31 +9,6 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title', __('PawsPalace'))</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content-container {
-            flex: 1;
-            padding-bottom: 30px;
-        }
-
-        .body {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        #map {
-            height: 400px; 
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
@@ -43,7 +18,6 @@
                 <img src="{{ asset('/img/logo.png') }}" alt="{{ __('PawsPalace Logo') }}"
                     style="max-height: 150px; width: auto;">
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -83,38 +57,40 @@
     <div class="container my-4 content-container">
         @yield('content')
     </div>
-    <div class="footer">
-        <div class="container py-4">
-            <div id="map"></div> 
-            <div class="footer copyright py-4 text-center text-black">
-                <div class="container">
-                    <a class="nav-link active" href="{{ route('home.about') }}">{{ __('About') }}</a>
-                    <small>
-                        {{ __('Copyright - PawsPalace') }}
-                    </small>
-                </div>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-                crossorigin="anonymous"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm-9MB7QD10hS4Msn-9m0oGCk6XvOYrko"></script>
-            <script>
-                function initMap() {
-                    var mapOptions = {
-                        center: { lat: 6.192683696746826, lng: -75.56332397460938 },
-                        zoom: 14
-                    };
-                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                    var marker = new google.maps.Marker({
-                        position: { lat: 6.192683696746826, lng: -75.56332397460938 },
-                        map: map,
-                        title: 'My location'
-                    });
-                }
 
-                window.onload = initMap;
-            </script>
+    @if(Route::is('home.index') || Route::is('home.about'))
+    <div class="map-container">
+        <h3 class="map-title">Localiza la tienda</h3>
+        <div id="map"></div>
+    </div>
+@endif
+
+    <div class="footer">
+        <div class="container">
+            <a class="nav-link" href="{{ route('home.about') }}">{{ __('About Us') }}</a>
+            <small>
+                {{ __('Copyright - PawsPalace') }}
+            </small>
         </div>
     </div>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm-9MB7QD10hS4Msn-9m0oGCk6XvOYrko"></script>
+    <script>
+        function initMap() {
+            var mapOptions = {
+                center: { lat: 6.192683696746826, lng: -75.56332397460938 },
+                zoom: 14
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var marker = new google.maps.Marker({
+                position: { lat: 6.192683696746826, lng: -75.56332397460938 },
+                map: map,
+                title: 'My location'
+            });
+        }
+        window.onload = initMap;
+    </script>
+</body>
 </html>
