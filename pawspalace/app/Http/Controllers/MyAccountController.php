@@ -15,15 +15,14 @@ class MyAccountController extends Controller
         $viewData['title'] = Lang::get('controllers.myaccount_orders_title');
         $viewData['subtitle'] = Lang::get('controllers.myaccount_orders_subtitle');
 
-        $orders = Order::with(['items.product', 'items.appointment'])->where('user_id', Auth::user()->getId())->get();
+        $orders = Order::with('items.product')->where('user_id', Auth::id())->get();
 
         foreach ($orders as $order) {
-            $appointmentsTotal = $order->items->filter(function ($item) {
-                return ! is_null($item->appointment);
-            })->sum(function ($item) {
-                return $item->quantity * $item->price;
-            });
-            $order->setAppointmentsTotal($appointmentsTotal);
+            $total = 0;
+            foreach ($order->items as $item) {
+                $total += $item->getPrice() * $item->getQuantity(); 
+            }
+            $order->setTotal($total); 
         }
 
         $viewData['orders'] = $orders;
