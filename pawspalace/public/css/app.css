@@ -10,7 +10,8 @@
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    background-color: #EEEEEE; 
+    background-color: #A0153E; 
+    color: white;
 }
 
 .copyright {
@@ -35,7 +36,7 @@ nav {
 }
 
 .navbar-nav a.nav-link:hover {
-    color: #90D26D !important;
+    color: #FFEBB2 !important;
 }
 
 .header-cream {
@@ -122,6 +123,95 @@ nav {
 .table thead th {
     background-color: #FFEBB2; 
     color: black; 
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-container {
+    flex: 1;
+    padding-bottom: 30px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.map-container {
+    margin-top: 20px;
+    border: 3px solid #FFEBB2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.map-title {
+    font-size: 24px; 
+    color: #A0153E; 
+}
+
+#map {
+    height: 300px; 
+    width: 102%; 
+}
+
+.nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-link:hover {
+    color: #FFEBB2;
+}
+
+.about-section,
+.faq-section,
+.privacy-policy-section,
+.terms-conditions-section {
+    margin-bottom: 40px;
+}
+
+.additional-info {
+    position: sticky;
+    top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid #A0153E;
+}
+
+.additional-info h3 {
+    background-color: #A0153E; 
+    color: white; 
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.additional-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.additional-info ul li {
+    margin-bottom: 10px;
+}
+
+.additional-info ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.additional-info ul li a:hover {
+    color: #dc205b;
 }
 
 
