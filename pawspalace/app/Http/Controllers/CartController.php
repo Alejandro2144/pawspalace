@@ -60,7 +60,7 @@ class CartController extends Controller
 
     public function addAppointment(Request $request, $id)
     {
-         $appointment = Appointment::find($id);
+        $appointment = Appointment::find($id);
 
         if ($appointment) {
             $cart = $request->session()->get('appointments', []);
@@ -114,6 +114,7 @@ class CartController extends Controller
             unset($products[$id]);
             $request->session()->put('products', $products);
         }
+
         return back();
     }
 

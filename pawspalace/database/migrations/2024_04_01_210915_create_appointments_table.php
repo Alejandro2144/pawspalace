@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('modality');
             $table->integer('price');
             $table->string('image');
-            $table->unsignedBigInteger('order_id')->nullable(); 
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
