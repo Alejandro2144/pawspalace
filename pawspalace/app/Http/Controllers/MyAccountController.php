@@ -20,9 +20,9 @@ class MyAccountController extends Controller
         foreach ($orders as $order) {
             $total = 0;
             foreach ($order->items as $item) {
-                $total += $item->price * $item->quantity; 
+                $total += $item->getPrice() * $item->getQuantity(); 
             }
-            $order->total = $total; 
+            $order->setTotal($total); 
         }
 
         $viewData['orders'] = $orders;
