@@ -76,8 +76,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm-9MB7QD10hS4Msn-9m0oGCk6XvOYrko"></script>
-    <script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}"></script>
+        <script>
         function initMap() {
             var mapOptions = {
                 center: { lat: 6.192683696746826, lng: -75.56332397460938 },
