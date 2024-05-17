@@ -293,5 +293,7 @@
     "My Orders - PawsPalace": "私の注文 - PawsPalace",
     "Search by name": "名前で検索",
     "Filter by Category": "カテゴリで絞り込む",
-    "Filter": "フィルター"
+    "Filter": "フィルター",
+    "It is not possible to generate a report because you have no orders." : "注文がないため、レポートを生成することはできません。",
+    "Locate the store" : "店舗を見つける"
 }
