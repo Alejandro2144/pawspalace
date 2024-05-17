@@ -14,11 +14,11 @@ class AppointmentController extends Controller
     {
         $pendingAppointments = Appointment::where('status', 'pendiente')->get();
 
-    $viewData = [
-        'title' => Lang::get('controllers.appointment_title'),
-        'subtitle' => Lang::get('controllers.appointment_subtitle'),
-        'appointments' => $pendingAppointments,
-    ];
+        $viewData = [
+            'title' => Lang::get('controllers.appointment_title'),
+            'subtitle' => Lang::get('controllers.appointment_subtitle'),
+            'appointments' => $pendingAppointments,
+        ];
 
         return view('appointment.index')->with('viewData', $viewData);
     }

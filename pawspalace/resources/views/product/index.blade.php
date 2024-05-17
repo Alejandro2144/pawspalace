@@ -14,19 +14,19 @@
     <div class="col-md-4 col-lg-3">
         <form class="form-inline my-2 my-lg-0">
             <select name="category" id="category" class="form-control mr-2">
-                <option value="">{{ __('Filter by Category') }}</option>
+                <option value="" disabled selected>{{ __('Filter by Category') }}</option>
                 <option value="alimentos">{{ __('Food') }}</option>
-                <option value="medicamentos">{{ __('Medicine') }}</option>
+                <option value="medicamentos">{{ __('Medicines') }}</option>
                 <option value="accesorios">{{ __('Accessories') }}</option>
             </select>
-            <button class="custom-button" type="submit">{{ __('Filter') }}</button>
+            <button class="custom-button mt-1" type="submit">{{ __('Filter') }}</button>
         </form>
     </div>
     <div class="col-md-4 col-lg-3">
         <form class="form-inline my-2 my-lg-0">
             <input name="query" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search by name') }}"
                 aria-label="{{ __('Search') }}" value="{{ $viewData['query'] }}">
-            <button class="custom-button" type="submit">{{ __('Search') }}</button>
+            <button class="custom-button mt-1" type="submit">{{ __('Search') }}</button>
         </form>
     </div>
 </div>

@@ -16,7 +16,6 @@ class Favorite extends Model
      * $this->product - Product - contains the associated Product
      * $this->user - User - contains the associated User
      */
-
     protected $fillable = ['user_id', 'product_id'];
 
     public function product(): BelongsTo
@@ -47,5 +46,5 @@ class Favorite extends Model
     public function setUser(User $user): void
     {
         $this->user = $user;
-    }   
+    }
 }

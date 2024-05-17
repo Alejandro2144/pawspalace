@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
 
 class Product extends Model
@@ -146,7 +145,7 @@ class Product extends Model
     public function favoritedByUsers()
     {
         return $this->belongsToMany(User::class, 'favorites');
-    }    
+    }
 
     public function reviews(): HasMany
     {
