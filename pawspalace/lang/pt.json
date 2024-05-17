@@ -293,5 +293,7 @@
     "My Orders - PawsPalace": "Meus pedidos - PawsPalace",
     "Search by name": "Pesquisar por nome",
     "Filter by Category": "Filtrar por categoria",
-    "Filter": "Filtrar"
+    "Filter": "Filtrar",
+    "It is not possible to generate a report because you have no orders." : "Não é possível gerar um relatório porque você não tem pedidos.",
+    "Locate the store" : "Localize a loja"
 }
