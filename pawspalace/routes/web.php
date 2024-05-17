@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::get('/favorites', 'App\Http\Controllers\ProductController@showFavorites')
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
     Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
+    Route::get('/generate-reports', 'App\Http\Controllers\MyAccountController@generateReports')->name('orders.reports');
 });
 
 // Admin routes
@@ -63,3 +65,9 @@ Route::put('/review/{id}/update', 'App\Http\Controllers\ReviewController@update'
 
 // Authentication Controllers routes
 Auth::routes();
+
+//Lang Switcher
+Route::get('/locale/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return Redirect::back();
+});

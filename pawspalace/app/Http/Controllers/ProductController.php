@@ -73,18 +73,18 @@ class ProductController extends Controller
     public function saveFavorite(Request $request): RedirectResponse
     {
         $user = Auth::user();
-    
+
         if (! $user) {
             return redirect()->route('login')->with('error', Lang::get('controllers.product_save_favorite_login'));
         }
-    
+
         $productId = $request->input('productId');
         $product = Product::findOrFail($productId);
-    
+
         $user->favoriteProducts()->toggle($product->id);
-    
+
         return redirect()->back()->with('success', Lang::get('controllers.product_save_favorite_success'));
-    }   
+    }
 
     public function showFavorites(): View
     {

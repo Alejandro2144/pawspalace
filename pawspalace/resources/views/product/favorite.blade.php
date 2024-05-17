@@ -6,15 +6,13 @@
 @section('content')
 
 <div class="breadcrumb">
-        <ul>
-            <li><a href="{{ route('home.index') }}">{{ __('Inicio') }}</a></li>
-            <li><a href="{{ route('product.showFavorites') }}">{{ __('Favoritos') }}</a></li>
-            <li>{{ __('Favorites') }}</li>
-        </ul>
-    </div>
+    <ul>
+        <li><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+        <li><a href="{{ route('product.showFavorites') }}">{{ __('Favorites') }}</a></li>
+    </ul>
+</div>
 
 <div class="container">
-
     @if ($favorites->isEmpty())
     <p>{{ __('No favorite products found.') }}</p>
     @else

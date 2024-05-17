@@ -8,6 +8,7 @@
         crossorigin="anonymous" />
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
     <title>@yield('title', __('PawsPalace'))</title>
 </head>
 
@@ -36,14 +37,43 @@
                     @else
                     <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
                     <a class="nav-link active" href="{{ route('myaccount.orders') }}">{{ __('My Orders') }}</a>
+                    <span class="nav-link active">{{ __('My Balance') }}: ${{ Auth::user()->getBalance() }}</span>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
                             onclick="document.getElementById('logout').submit();">{{ __('Logout') }}</a>
                         @csrf
                     </form>
-                    <span class="nav-link active">{{ __('Balance') }}: ${{ Auth::user()->balance }}</span>
                     @endguest
+                </div>
+                <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="Dropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span id="selected-flag" class="flag-icon flag-icon-gb"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="Dropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/en') }}" onclick="setFlag('gb')"><span
+                                    class="flag-icon flag-icon-gb"></span> English</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/es') }}" onclick="setFlag('es')"><span
+                                    class="flag-icon flag-icon-es"></span> Español</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/fr') }}" onclick="setFlag('fr')"><span
+                                    class="flag-icon flag-icon-fr"></span> Français</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/ja') }}" onclick="setFlag('jp')"><span
+                                    class="flag-icon flag-icon-jp"></span> 日本語</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/pt') }}" onclick="setFlag('pt')"><span
+                                    class="flag-icon flag-icon-pt"></span> Português</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -63,7 +93,7 @@
         <h3 class="map-title">Localiza la tienda</h3>
         <div id="map"></div>
     </div>
-@endif
+    @endif
 
     <div class="footer">
         <div class="container">
@@ -74,23 +104,30 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}"></script>
-        <script>
-        function initMap() {
-            var mapOptions = {
-                center: { lat: 6.192683696746826, lng: -75.56332397460938 },
-                zoom: 14
-            };
-            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            var marker = new google.maps.Marker({
-                position: { lat: 6.192683696746826, lng: -75.56332397460938 },
-                map: map,
-                title: 'My location'
-            });
-        }
-        window.onload = initMap;
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}"></script>
+    <script>
+    function initMap() {
+        var mapOptions = {
+            center: {
+                lat: 6.192683696746826,
+                lng: -75.56332397460938
+            },
+            zoom: 14
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var marker = new google.maps.Marker({
+            position: {
+                lat: 6.192683696746826,
+                lng: -75.56332397460938
+            },
+            map: map,
+            title: 'My location'
+        });
+    }
+    window.onload = initMap;
     </script>
 </body>
+
 </html>

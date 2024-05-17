@@ -54,7 +54,8 @@
             <div class="text-end">
                 <a class="btn btn-outline-secondary mb-2"><b>{{ __('Total to pay') }}:</b> ${{ $viewData["total"] }}</a>
                 @if (count($viewData["products"]) > 0 || count($viewData["appointments"]) > 0)
-                <a href="{{ route('cart.purchase') }}" class="custom-button">{{ __('Purchase') }}</a>
+                <a href="{{ route('cart.purchase') }}" class="custom-button"
+                    style="text-decoration: none;">{{ __('Purchase') }}</a>
                 <a href="{{ route('cart.delete') }}">
                     <button class="btn btn-danger mb-2">
                         {{ __('Remove all products and appointments from Cart') }}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\FinancialFeaturesInterface;
 use App\Models\Appointment;
 use App\Models\Item;
 use App\Models\Order;
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\Lang;
 
 class CartController extends Controller
 {
+    protected $financialFeatures;
+
+    public function __construct(FinancialFeaturesInterface $financialFeatures)
+    {
+        $this->financialFeatures = $financialFeatures;
+    }
+
     public function index(Request $request)
     {
         $total = 0;
@@ -49,8 +57,9 @@ class CartController extends Controller
         $product = Product::find($id);
 
         if ($product) {
+            $quantity = $request->input('quantity');
             $cart = $request->session()->get('products', []);
-            $cart[$id] = isset($cart[$id]) ? $cart[$id] + 1 : 1;
+            $cart[$id] = isset($cart[$id]) ? $cart[$id] + $quantity : $quantity;
             $request->session()->put('products', $cart);
 
             return redirect()->route('cart.index');
@@ -109,7 +118,9 @@ class CartController extends Controller
             }
             unset($appointments[$id]);
             $request->session()->put('appointments', $appointments);
+
             return back();
+
         }
         if (isset($products[$id])) {
             unset($products[$id]);
