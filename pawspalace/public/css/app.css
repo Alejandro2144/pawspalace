@@ -185,7 +185,8 @@ html, body {
     top: 20px;
     padding: 20px;
     border-radius: 5px;
-    border: 2px solid #A0153E;
+    border: 1px solid #A0153E;
+    text-align: center;
 }
 
 .additional-info h3 {
@@ -214,4 +215,16 @@ html, body {
     color: #dc205b;
 }
 
+.about-title {
+    color: #A0153E;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.about-section,
+.faq-section,
+.privacy-policy-section,
+.terms-conditions-section {
+    text-align: justify;
+}
 
