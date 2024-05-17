@@ -27,7 +27,7 @@ class Product extends Model
      */
     protected $fillable = ['name', 'description', 'category', 'price', 'stock'];
 
-    public static function sumPricesByQuantities($products, $productsInSession)
+    public static function sumPricesByQuantities($products, $productsInSession): int
     {
         $total = 0;
         foreach ($products as $product) {
