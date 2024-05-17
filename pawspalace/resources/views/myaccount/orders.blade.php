@@ -50,6 +50,7 @@
     {{ __('Seems to be that you have not purchased anything in our store.') }}
 </div>
 @endforelse
+@if(!$viewData["orders"]->isEmpty())
 <div class="card mb-4">
     <div class="card-header user-reviews-bg text-center">
         <b>Generate Reports</b>
@@ -67,6 +68,12 @@
         </form>
     </div>
 </div>
-
+@else
+<div class="table table-bordered table-striped mt-2">
+    <div class="alert alert-danger" role="alert">
+        {{ __('It is not possible to generate a report because you have no orders.') }}
+    </div>
+</div>
+@endif
 
 @endsection

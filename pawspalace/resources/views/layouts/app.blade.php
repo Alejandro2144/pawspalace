@@ -50,7 +50,13 @@
                 <div class="dropdown">
                     <a class="dropdown-toggle" id="Dropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <span id="selected-flag" class="flag-icon flag-icon-gb"></span>
+                        <span id="selected-flag" class="flag-icon 
+                            @if(app()->getLocale() == 'en') flag-icon-gb
+                            @elseif(app()->getLocale() == 'es') flag-icon-es
+                            @elseif(app()->getLocale() == 'fr') flag-icon-fr
+                            @elseif(app()->getLocale() == 'ja') flag-icon-jp
+                            @elseif(app()->getLocale() == 'pt') flag-icon-pt
+                            @endif"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="Dropdown">
                         <li>
@@ -90,7 +96,7 @@
 
     @if(Route::is('home.index') || Route::is('home.about'))
     <div class="map-container">
-        <h3 class="map-title">Localiza la tienda</h3>
+        <h3 class="map-title">{{ __('Locate the store') }}</h3>
         <div id="map"></div>
     </div>
     @endif
@@ -127,6 +133,10 @@
         });
     }
     window.onload = initMap;
+
+    function setFlag(flagCode) {
+        document.getElementById('selected-flag').className = 'flag-icon flag-icon-' + flagCode;
+    }
     </script>
 </body>
 

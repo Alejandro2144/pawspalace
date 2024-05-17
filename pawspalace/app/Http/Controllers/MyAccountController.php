@@ -32,7 +32,7 @@ class MyAccountController extends Controller
         return view('myaccount.orders')->with('viewData', $viewData);
     }
 
-    public function generateReports(Request $request)
+    public function generateReports(Request $request): View
     {
         $format = $request->input('format', 'pdf');
 
@@ -68,5 +68,7 @@ class MyAccountController extends Controller
         } elseif ($format === 'excel') {
             $financialFeatures->generateExcelReport($ordersData);
         }
+
+        return view('myaccount.orders');
     }
 }

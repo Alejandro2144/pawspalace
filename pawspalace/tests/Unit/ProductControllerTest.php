@@ -2,12 +2,12 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Http\Controllers\ProductController;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Tests\TestCase;
 
 class ProductControllerTest extends TestCase
 {
@@ -55,7 +55,7 @@ class ProductControllerTest extends TestCase
     /**
      * Asserts the response of the index method.
      *
-     * @param \Illuminate\View\View $response
+     * @param  \Illuminate\View\View  $response
      * @return void
      */
     private function assertProductIndexResponse($response)
@@ -71,7 +71,7 @@ class ProductControllerTest extends TestCase
     /**
      * Asserts the response of the showFavorites method.
      *
-     * @param \Illuminate\View\View $response
+     * @param  \Illuminate\View\View  $response
      * @return void
      */
     private function assertShowFavoritesResponse($response)
@@ -79,5 +79,4 @@ class ProductControllerTest extends TestCase
         $viewData = $response->getData();
         $this->assertArrayHasKey('favorites', $viewData);
     }
-
 }
