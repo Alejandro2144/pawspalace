@@ -9,6 +9,7 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@yield('title', __('PawsPalace'))</title>
 </head>
 
@@ -29,19 +30,19 @@
                     <a class="nav-link active" href="{{ route('product.index') }}">{{ __('Products') }}</a>
                     <a class="nav-link active"
                         href="{{ route('appointment.index') }}">{{ __('Schedule Appointment') }}</a>
-                    <a class="nav-link active" href="{{ route('cart.index') }}">{{ __('Cart') }}</a>
+                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
                     <a class="nav-link active" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @else
-                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
-                    <a class="nav-link active" href="{{ route('myaccount.orders') }}">{{ __('My Orders') }}</a>
-                    <span class="nav-link active">{{ __('My Balance') }}: ${{ Auth::user()->getBalance() }}</span>
+                    <a class="nav-link active" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
+                    <span class="nav-link active"><i class="fa-solid fa-wallet"></i>: ${{ Auth::user()->getBalance() }}</span>
+                    <a class="nav-link active" href="{{ route('myaccount.orders') }}"><i class="fa-solid fa-receipt"></i> Orders</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
-                            onclick="document.getElementById('logout').submit();">{{ __('Logout') }}</a>
+                            onclick="document.getElementById('logout').submit();"><i class="fa-solid fa-right-from-bracket"></i></a>
                         @csrf
                     </form>
                     @endguest
@@ -110,34 +111,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}"></script>
-    <script>
-    function initMap() {
-        var mapOptions = {
-            center: {
-                lat: 6.192683696746826,
-                lng: -75.56332397460938
-            },
-            zoom: 14
-        };
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        var marker = new google.maps.Marker({
-            position: {
-                lat: 6.192683696746826,
-                lng: -75.56332397460938
-            },
-            map: map,
-            title: 'My location'
-        });
-    }
-    window.onload = initMap;
+    <script src="{{ asset('js/map.js') }}"></script>
 
-    function setFlag(flagCode) {
-        document.getElementById('selected-flag').className = 'flag-icon flag-icon-' + flagCode;
-    }
-    </script>
+
 </body>
 
 </html>
