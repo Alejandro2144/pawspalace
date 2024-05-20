@@ -12,10 +12,12 @@
 
 <div class="breadcrumb">
     <ul>
+        <li><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+        <li><a href="{{ route('product.index') }}">{{ __('Products') }}</a></li>
         @foreach ($viewData['breadcrumbs'] as $breadcrumb)
-            <li><a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['nombre'] }}</a></li>
+        <li><a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['nombre'] }}</a></li>
         @endforeach
-        <li>{{ __('Detalles del Producto') }}</li>
+        <li>{{ __('Product Details') }}</li>
     </ul>
 </div>
 

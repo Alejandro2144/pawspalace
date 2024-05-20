@@ -27,4 +27,5 @@ return [
     'review_save_login_error' => 'このアクションを実行するにはログインする必要があります',
     'review_save_success' => 'レビューが正常に作成されました。',
     'review_update_success' => 'レビューが正常に更新されました。',
+    'cart_balance_insuficient' => '残高不足です。',
 ];

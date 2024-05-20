@@ -53,18 +53,18 @@
 @if(!$viewData["orders"]->isEmpty())
 <div class="card mb-4">
     <div class="card-header user-reviews-bg text-center">
-        <b>Generate Reports</b>
+        <b>{{ __('Generate Report') }}</b>
     </div>
     <div class="table table-bordered table-striped text-center mt-2">
-        <p>Choose the report format:</p>
+        <p>{{ __('Choose the report format:') }}</p>
         <form action="{{ route('orders.reports') }}" method="GET">
             <div style="padding-right: 250px; padding-left: 250px">
                 <select name="format" id="format" class="form-select text-center border">
-                    <option value="pdf">PDF</option>
-                    <option value="excel">Excel</option>
+                    <option value="pdf">{{ __('PDF') }}</option>
+                    <option value="excel">{{ __('Excel') }}</option>
                 </select>
             </div>
-            <button class="custom-button mt-3" type="submit">Generate Report</button>
+            <button class="custom-button mt-3" type="submit">{{ __('Generate Report') }}</button>
         </form>
     </div>
 </div>

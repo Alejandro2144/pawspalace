@@ -6,141 +6,122 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="about-section" id="about-pawspalace">
-                <h1 class="about-title">Sobre PawsPalace</h1>
-                <h4>Nuestra Historia</h4>
-                <p>PawsPalace nació de la pasión compartida de un grupo de personas, Alejandro, Angel y Katherine, por
-                    los animales. Después de años de trabajar en diferentes áreas de la industria de mascotas, se dieron
-                    cuenta de la necesidad de crear un destino en línea donde los amantes de los animales pudieran
-                    encontrar todo lo que necesitan para sus queridos compañeros peludos.</p>
-                <h4>Nuestra Misión y Valores</h4>
-                <p>En PawsPalace, nuestra misión es proporcionar a los dueños de mascotas productos de alta calidad que
-                    promuevan la felicidad y el bienestar de sus amigos peludos. Nos comprometemos a ofrecer un servicio
-                    excepcional, manteniendo siempre la integridad, la transparencia y el respeto por todos los seres
-                    vivos.</p>
-                <h4>Nuestro Equipo</h4>
-                <p>El equipo de PawsPalace está formado por un grupo apasionado de individuos que comparten un amor
-                    inquebrantable por los animales. Desde nuestros fundadores hasta nuestro equipo de atención al
-                    cliente, cada miembro está dedicado a proporcionar la mejor experiencia posible a nuestros clientes
-                    y sus mascotas.</p>
-                <h4>Nuestro Compromiso con la Comunidad</h4>
-                <p>En PawsPalace, creemos en devolver a la comunidad que tanto nos ha dado. Colaboramos con refugios
-                    locales de animales, donando una parte de nuestras ganancias y organizando eventos de adopción para
-                    ayudar a encontrar hogares amorosos para mascotas necesitadas.</p>
-                <p>PawsPalace ha sido honrado con el Premio a la Excelencia en Servicio al Cliente en la Industria de
-                    Mascotas dos años consecutivos, reconociendo nuestro compromiso con la satisfacción del cliente y la
-                    calidad del servicio.</p>
-                <p>¡No solo somos nosotros quienes amamos a PawsPalace! Nuestros clientes están encantados con nuestros
-                    productos y servicios. '¡La calidad de los productos de PawsPalace es insuperable!' </p>
+                <h1 class="about-title">{{ __('About PawsPalace') }}</h1>
+                <h4>{{ __('Our Story') }}</h4>
+                <p>{{ __('PawsPalace was born out of the shared passion of a group of individuals, Alejandro, Angel, and Katherine, for animals. After years of working in different areas of the pet industry, they realized the need to create an online destination where animal lovers could find everything they need for their beloved furry companions.') }}
+                </p>
+                <h4>{{ __('Our Mission and Values') }}</h4>
+                <p>{{ __('At PawsPalace, our mission is to provide pet owners with high-quality products that promote the happiness and well-being of their furry friends. We are committed to providing exceptional service, always maintaining integrity, transparency, and respect for all living beings.') }}
+                </p>
+                <h4>{{ __('Our Team') }}</h4>
+                <p>{{ __('The PawsPalace team is made up of a passionate group of individuals who share an unwavering love for animals. From our founders to our customer service team, each member is dedicated to providing the best possible experience to our customers and their pets.') }}
+                </p>
+                <h4>{{ __('Our Commitment to the Community') }}</h4>
+                <p>{{ __('At PawsPalace, we believe in giving back to the community that has given us so much. We collaborate with local animal shelters, donating a portion of our profits and organizing adoption events to help find loving homes for pets in need.') }}
+                </p>
+                <p>{{ __('PawsPalace has been honored with the Customer Service Excellence Award in the Pet Industry two consecutive years, recognizing our commitment to customer satisfaction and service quality.') }}
+                </p>
+                <p>{{ __("It's not just us who love PawsPalace! Our customers are delighted with our products and services. 'The quality of PawsPalace products is unbeatable!'") }}
+                </p>
             </div>
 
             <div class="faq-section" id="faq">
-                <h1 class="about-title">Preguntas Frecuentes</h1>
+                <h1 class="about-title">{{ __('Frequently Asked Questions') }}</h1>
                 <div class="faq-item">
-                    <h5>¿Cuál es el tiempo de entrega estimado?</h5>
-                    <p>El tiempo de entrega varía según tu ubicación. Generalmente, los pedidos se entregan dentro de
-                        3-5 días hábiles.</p>
+                    <h5>{{ __('What is the estimated delivery time?') }}</h5>
+                    <p>{{ __('Delivery time varies depending on your location. Generally, orders are delivered within 3-5 business days.') }}
+                    </p>
                 </div>
                 <div class="faq-item">
-                    <h5>¿Qué hago si mi pedido llega dañado?</h5>
-                    <p>Si tu pedido llega dañado, por favor contáctanos de inmediato para que podamos resolver el
-                        problema lo antes posible.</p>
+                    <h5>{{ __('What do I do if my order arrives damaged?') }}</h5>
+                    <p>{{ __('If your order arrives damaged, please contact us immediately so we can resolve the issue as soon as possible.') }}
+                    </p>
                 </div>
                 <div class="faq-item">
-                    <h5>¿Puedo devolver un producto?</h5>
-                    <p>Sí, aceptamos devoluciones dentro de los 30 días posteriores a la recepción del producto. Por
-                        favor revisa nuestra política de devoluciones para más detalles.</p>
+                    <h5>{{ __('Can I return a product?') }}</h5>
+                    <p>{{ __('Yes, we accept returns within 30 days of receiving the product. Please review our return policy for more details.') }}
+                    </p>
                 </div>
                 <div class="faq-item">
-                    <h5>¿Ofrecen envío internacional?</h5>
-                    <p>Sí, ofrecemos envío internacional a la mayoría de los países. Los costos y tiempos de envío
-                        pueden variar. Por favor, consulta nuestras opciones de envío durante el proceso de compra.</p>
+                    <h5>{{ __('Do you offer international shipping?') }}</h5>
+                    <p>{{ __('Yes, we offer international shipping to most countries. Shipping costs and times may vary. Please check our shipping options during the checkout process.') }}
+                    </p>
                 </div>
                 <div class="faq-item">
-                    <h5>¿Tienen una tienda física?</h5>
-                    <p>Actualmente contamos con una sede exclusiva para las visitas de nuestros peludos. En la página
-                        principal podrás encontrar un mapa con nuestra ubicación</p>
+                    <h5>{{ __('Do you have a physical store?') }}</h5>
+                    <p>{{ __('Currently, we have an exclusive location for visits from our furry friends. You can find a map with our location on the homepage.') }}
+                    </p>
                 </div>
                 <div class="faq-item">
-                    <h5>¿Cómo puedo contactar al servicio al cliente?</h5>
-                    <p>Puedes contactar a nuestro equipo de servicio al cliente por correo electrónico a
-                        info@pawspalace.com o llamando al +123456789.</p>
+                    <h5>{{ __('How can I contact customer service?') }}</h5>
+                    <p>{{ __('You can contact our customer service team by email at info@pawspalace.com or by calling +123456789.') }}
+                    </p>
                 </div>
             </div>
 
             <div class="privacy-policy-section" id="privacy-policy">
-                <h1 class="about-title">Política de Privacidad</h1>
-                <p>En PawsPalace, nos tomamos muy en serio la privacidad de nuestros usuarios. Esta política de
-                    privacidad describe cómo recopilamos, utilizamos y protegemos la información personal que nos
-                    proporcionas.</p>
-                <h5>Información que recopilamos</h5>
-                <p>Recopilamos información personal cuando te registras en nuestra tienda en línea, realizas un pedido,
-                    te suscribes a nuestro boletín informativo o completas un formulario. La información que recopilamos
-                    puede incluir tu nombre, dirección de correo electrónico, dirección postal, número de teléfono y
-                    detalles de pago.</p>
-                <h5>Cómo utilizamos tu información</h5>
-                <p>Utilizamos la información que recopilamos para procesar tus pedidos, administrar tu cuenta, enviar
-                    correos electrónicos promocionales y mejorar nuestros productos y servicios. También podemos
-                    utilizar tu información para fines de marketing, pero solo con tu consentimiento explícito.</p>
-                <h5>Protección de la información</h5>
-                <p>Tomamos medidas de seguridad para proteger tu información personal contra pérdida, uso indebido o
-                    acceso no autorizado. Utilizamos encriptación SSL para proteger tus datos durante la transmisión y
-                    mantenemos procedimientos estrictos de seguridad para proteger tus datos almacenados.</p>
-                <h5>Divulgación a terceros</h5>
-                <p>No vendemos, intercambiamos ni transferimos tu información personal a terceros sin tu consentimiento,
-                    excepto cuando sea necesario para cumplir con la ley, hacer cumplir nuestras políticas de sitio web
-                    o proteger nuestros derechos, propiedad o seguridad.</p>
-                <h5>Consentimiento</h5>
-                <p>Al utilizar nuestro sitio web, aceptas nuestra política de privacidad y nos das tu consentimiento
-                    para recopilar, utilizar y proteger tu información personal de acuerdo con esta política.</p>
-                <h5>Actualizaciones de la política</h5>
-                <p>Nos reservamos el derecho de actualizar o cambiar nuestra política de privacidad en cualquier
-                    momento. Cualquier cambio significativo se publicará en esta página. Te recomendamos que revises
-                    periódicamente esta página para mantenerte informado sobre cómo protegemos tu información.</p>
-                <h5>Contacto</h5>
-                <p>Si tienes alguna pregunta sobre nuestra política de privacidad, por favor contáctanos a través de
-                    info@pawspalace.com.</p>
+                <h1 class="about-title">{{ __('Privacy Policy') }}</h1>
+                <p>{{ __('At PawsPalace, we take the privacy of our users very seriously. This privacy policy describes how we collect, use, and protect the personal information you provide to us.') }}
+                </p>
+                <h5>{{ __('Information We Collect') }}</h5>
+                <p>{{ __('We collect personal information when you register on our online store, place an order, subscribe to our newsletter, or complete a form. The information we collect may include your name, email address, postal address, phone number, and payment details.') }}
+                </p>
+                <h5>{{ __('How We Use Your Information') }}</h5>
+                <p>{{ __('We use the information we collect to process your orders, manage your account, send promotional emails, and improve our products and services. We may also use your information for marketing purposes, but only with your explicit consent.') }}
+                </p>
+                <h5>{{ __('Information Protection') }}</h5>
+                <p>{{ __('We take security measures to protect your personal information against loss, misuse, or unauthorized access. We use SSL encryption to protect your data during transmission and maintain strict security procedures to protect your stored data.') }}
+                </p>
+                <h5>{{ __('Disclosure to Third Parties') }}</h5>
+                <p>{{ __('We do not sell, trade, or transfer your personal information to third parties without your consent, except when necessary to comply with the law, enforce our website policies, or protect our rights, property, or safety.') }}
+                </p>
+                <h5>{{ __('Consent') }}</h5>
+                <p>{{ __('By using our website, you agree to our privacy policy and give us your consent to collect, use, and protect your personal information in accordance with this policy.') }}
+                </p>
+                <h5>{{ __('Policy Updates') }}</h5>
+                <p>{{ __('We reserve the right to update or change our privacy policy at any time. Any significant changes will be posted on this page. We recommend that you periodically review this page to stay informed about how we protect your information.') }}
+                </p>
+                <h5>{{ __('Contact') }}</h5>
+                <p>{{ __('If you have any questions about our privacy policy, please contact us at info@pawspalace.com.') }}
+                </p>
             </div>
 
             <div class="terms-conditions-section" id="terms-conditions">
-                <h1 class="about-title">Términos y Condiciones</h1>
-                <p>Por favor, lee atentamente estos términos y condiciones antes de utilizar nuestro sitio web.</p>
-                <h5>Aceptación de Términos</h5>
-                <p>Al acceder y utilizar este sitio web, aceptas estar sujeto a estos términos y condiciones y a todas
-                    las leyes y regulaciones aplicables. Si no estás de acuerdo con alguno de estos términos, no
-                    utilices nuestro sitio.</p>
-                <h5>Uso del Sitio</h5>
-                <p>El contenido de este sitio web es solo para información general y uso personal. Nos reservamos el
-                    derecho de modificar o retirar temporal o permanentemente el sitio (o cualquier parte de él) con o
-                    sin previo aviso.</p>
-                <h5>Propiedad Intelectual</h5>
-                <p>Todos los derechos de propiedad intelectual en este sitio web, incluidos, entre otros, el diseño, el
-                    texto, los gráficos, el software y todos los códigos fuente subyacentes, son propiedad nuestra o de
-                    nuestros proveedores.</p>
-                <h5>Enlaces a Terceros</h5>
-                <p>Nuestro sitio web puede contener enlaces a sitios web de terceros. Estos enlaces se proporcionan
-                    únicamente para tu conveniencia y no implican que respaldemos o tengamos ninguna asociación con el
-                    sitio enlazado.</p>
-                <h5>Limitación de Responsabilidad</h5>
-                <p>No seremos responsables de ningún daño directo, indirecto, incidental, especial, emergente o punitivo
-                    que surja de tu uso o acceso a este sitio web.</p>
-                <h5>Modificaciones</h5>
-                <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Las
-                    modificaciones serán efectivas inmediatamente después de su publicación en el sitio web.</p>
-                <h5>Ley Aplicable</h5>
-                <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes del país en el que
-                    estamos ubicados.</p>
-                <p>Si tienes alguna pregunta sobre estos términos y condiciones, contáctanos a través de
-                    info@pawspalace.com.</p>
+                <h1 class="about-title">{{ __('Terms and Conditions') }}</h1>
+                <p>{{ __('Please read these terms and conditions carefully before using our website.') }}</p>
+                <h5>{{ __('Acceptance of Terms') }}</h5>
+                <p>{{ __('By accessing and using this website, you agree to be bound by these terms and conditions and all applicable laws and regulations. If you do not agree to any of these terms, do not use our site.') }}
+                </p>
+                <h5>{{ __('Site Usage') }}</h5>
+                <p>{{ __('The content of this website is for general information and personal use only. We reserve the right to modify or withdraw the site (or any part of it) temporarily or permanently with or without notice.') }}
+                </p>
+                <h5>{{ __('Intellectual Property') }}</h5>
+                <p>{{ __('All intellectual property rights on this website, including but not limited to design, text, graphics, software, and all underlying source codes, are owned by us or our suppliers.') }}
+                </p>
+                <h5>{{ __('Third-Party Links') }}</h5>
+                <p>{{ __('Our website may contain links to third-party websites. These links are provided solely for your convenience and do not imply endorsement or association with the linked site.') }}
+                </p>
+                <h5>{{ __('Limitation of Liability') }}</h5>
+                <p>{{ __('We shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use or access to this website.') }}
+                </p>
+                <h5>{{ __('Modifications') }}</h5>
+                <p>{{ __('We reserve the right to modify these terms and conditions at any time. Modifications will be effective immediately upon posting on the website.') }}
+                </p>
+                <h5>{{ __('Applicable Law') }}</h5>
+                <p>{{ __('These terms and conditions shall be governed and construed in accordance with the laws of the country in which we are located.') }}
+                </p>
+                <p>{{ __('If you have any questions about these terms and conditions, please contact us at info@pawspalace.com.') }}
+                </p>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="additional-info">
-                <h3>Información Adicional</h3>
+                <h3>{{ __('Additional Information') }}</h3>
                 <ul>
-                    <li><a href="#about-pawspalace">Sobre PawsPalace</a></li>
-                    <li><a href="#faq">Preguntas Frecuentes</a></li>
-                    <li><a href="#privacy-policy">Política de Privacidad</a></li>
-                    <li><a href="#terms-conditions">Términos y Condiciones</a></li>
+                    <li><a href="#about-pawspalace">{{ __('About PawsPalace') }}</a></li>
+                    <li><a href="#faq">{{ __('Frequently Asked Questions') }}</a></li>
+                    <li><a href="#privacy-policy">{{ __('Privacy Policy') }}</a></li>
+                    <li><a href="#terms-conditions">{{ __('Terms and Conditions') }}</a></li>
                 </ul>
             </div>
         </div>

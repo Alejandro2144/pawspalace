@@ -27,4 +27,5 @@ return [
     'review_save_login_error' => 'Você precisa fazer login para realizar esta ação.',
     'review_save_success' => 'Avaliação criada com sucesso.',
     'review_update_success' => 'Avaliação atualizada com sucesso.',
+    'cart_balance_insuficient' => 'Saldo insuficiente.',
 ];
