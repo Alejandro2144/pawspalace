@@ -6,8 +6,8 @@
 
 <div class="breadcrumb">
     <ul>
-        <li><a href="{{ route('home.index') }}">Inicio</a></li>
-        <li>Productos</li>
+        <li><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+        <li>{{ __('Products') }}</li>
     </ul>
 </div>
 <div class="row justify-content-between mb-3">

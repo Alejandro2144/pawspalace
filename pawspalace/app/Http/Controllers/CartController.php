@@ -176,8 +176,12 @@ class CartController extends Controller
         $order->save();
 
         $user = Auth::user();
-        $user->setBalance($user->getBalance() - $total);
-        $user->save();
+        if ($user->getBalance() >= $total) {
+            $user->setBalance($user->getBalance() - $total);
+            $user->save();
+        } else {
+            return redirect()->back()->with('error', Lang::get('controllers.cart_balance_insuficient'));
+        }
 
         $request->session()->forget(['products', 'appointments']);
 

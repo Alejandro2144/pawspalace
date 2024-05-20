@@ -50,6 +50,11 @@
                 @endforeach
             </tbody>
         </table>
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="row">
             <div class="text-end">
                 <a class="btn btn-outline-secondary mb-2"><b>{{ __('Total to pay') }}:</b> ${{ $viewData["total"] }}</a>

@@ -27,4 +27,5 @@ return [
     'review_save_login_error' => 'You must be logged in to perform this action',
     'review_save_success' => 'Review created successfully',
     'review_update_success' => 'Review updated successfully',
+    'cart_balance_insuficient' => 'Insufficient balance.',
 ];

@@ -51,8 +51,6 @@ class ProductController extends Controller
         }
 
         $breadcrumbs = [
-            ['nombre' => 'Inicio', 'url' => route('home.index')],
-            ['nombre' => 'Productos', 'url' => route('product.index')],
             ['nombre' => $product->getName(), 'url' => route('product.show', ['id' => $productId])],
         ];
 
