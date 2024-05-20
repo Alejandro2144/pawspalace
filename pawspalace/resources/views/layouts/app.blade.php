@@ -30,12 +30,12 @@
                     <a class="nav-link active" href="{{ route('product.index') }}">{{ __('Products') }}</a>
                     <a class="nav-link active"
                         href="{{ route('appointment.index') }}">{{ __('Schedule Appointment') }}</a>
-                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
                     <a class="nav-link active" href="{{ route('register') }}">{{ __('Register') }}</a>
                     @else
+                    <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
                     <a class="nav-link active" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
                     <span class="nav-link active"><i class="fa-solid fa-wallet"></i>: ${{ Auth::user()->getBalance() }}</span>
                     <a class="nav-link active" href="{{ route('myaccount.orders') }}"><i class="fa-solid fa-receipt"></i> Orders</a>
