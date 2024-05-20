@@ -50,8 +50,8 @@ nav {
 }
 
 .custom-button {
-    background-color: #87C4FF; 
-    color: black;
+    background-color: #E8E8E8; 
+    color: #0d0d0d;
     border: none; 
     padding: 10px 15px; 
     border-radius: 5px; 
@@ -60,7 +60,8 @@ nav {
 }
 
 .custom-button:hover {
-    background-color: #90D26D; 
+    background-color: #D0D0D0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .heart-btn {
@@ -166,7 +167,7 @@ html, body {
 .nav-link {
     color: white;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .nav-link:hover {
