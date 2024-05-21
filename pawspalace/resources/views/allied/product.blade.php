@@ -8,4 +8,4 @@
     <pre>{{ json_encode($viewData['recipes'], JSON_PRETTY_PRINT) }}</pre>
 </div>
 
-@endsectiony
+@endsection
