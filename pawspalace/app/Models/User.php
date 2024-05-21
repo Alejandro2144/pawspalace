@@ -27,7 +27,6 @@ class User extends Authenticatable
      * $this->attributes['updated_at'] - timestamp - contains the user update date
      * $this->orders - Collection - contains the associated orders
      * $this->reviews - Collection - contains the associated reviews
-     * $this->products - Collection - contains the associated products
      * $this->favorites - Collection - contains the associated favorites
      */
 
@@ -158,24 +157,9 @@ class User extends Authenticatable
         $this->reviews = $reviews;
     }
 
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-
-    public function setProducts(Collection $products): void
-    {
-        $this->products = $products;
-    }
-
     public function favorites(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Favorite::class);
     }
 
     public function getFavorites(): Collection
