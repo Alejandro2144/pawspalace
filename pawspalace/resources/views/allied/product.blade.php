@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <h1>Productos Aliados</h1>
+<h1>{{ __('Allied Products') }}</h1>
 
-    <div>
-        <pre>{{ json_encode($viewData['recipes'], JSON_PRETTY_PRINT) }}</pre>
-    </div>
+<div>
+    <pre>{{ json_encode($viewData['recipes'], JSON_PRETTY_PRINT) }}</pre>
+</div>
 
-@endsection
+@endsectiony

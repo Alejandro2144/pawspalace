@@ -186,8 +186,6 @@ class CartController extends Controller
         $request->session()->forget(['products', 'appointments']);
 
         $viewData = [
-            'title' => Lang::get('controllers.cart_purchase_title'),
-            'subtitle' => Lang::get('controllers.cart_purchase_subtitle'),
             'order' => $order,
         ];
 

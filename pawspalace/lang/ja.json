@@ -261,7 +261,7 @@
     "Cart": "カート",
     "Schedule Appointment": "予約のスケジュール",
     "My Favorites": "お気に入り",
-    "My Orders": "私の注文",
+    "Orders": "私の注文",
     "Welcome to PawsPalace": "PawsPalaceへようこそ",
     "Order #": "注文番号",
     "Date:": "日付：",
@@ -306,6 +306,7 @@
     "Our Mission and Values": "私たちの使命と価値観",
     "At PawsPalace, our mission is to provide pet owners with high-quality products that promote the happiness and well-being of their furry friends. We are committed to providing exceptional service, always maintaining integrity, transparency, and respect for all living beings.": "PawsPalaceでは、ペットの飼い主に愛する毛むくじゃらの友達の幸福と健康を促進する高品質な製品を提供することが使命です。私たちは、常に誠実さ、透明性、すべての生き物への尊重を維持しながら、優れたサービスを提供することにコミットしています。",
     "Our Team": "私たちのチーム",
+    "Allied products" : "連合製品",
     "The PawsPalace team is made up of a passionate group of individuals who share an unwavering love for animals. From our founders to our customer service team, each member is dedicated to providing the best possible experience to our customers and their pets.": "PawsPalaceのチームは、動物に対する揺るぎない愛を共有する情熱的な個人から成り立っています。私たちの創設者から私たちのカスタマーサービスチームまで、各メンバーが顧客とそのペットに最高の体験を提供することに専念しています。",
     "Our Commitment to the Community": "コミュニティへの取り組み",
     "At PawsPalace, we believe in giving back to the community that has given us so much. We collaborate with local animal shelters, donating a portion of our profits and organizing adoption events to help find loving homes for pets in need.": "PawsPalaceでは、私たちに与えてくれたコミュニティに恩返しすることを信じています。地元の動物保護施設と協力し、利益の一部を寄付し、ペットが必要とする愛情あふれる家を見つけるのを手助けするための養子縁組イベントを開催しています。",
@@ -356,5 +357,6 @@
     "These terms and conditions shall be governed and construed in accordance with the laws of the country in which we are located.": "これらの利用規約は、当社が所在する国の法律に従って解釈され、適用されます。",
     "We shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use or access to this website.": "当社は、このウェブサイトのご利用やアクセスに起因する直接、間接、付随的、特別、結果的、または懲罰的な損害について一切責任を負いません。",
     "Our website may contain links to third-party websites. These links are provided solely for your convenience and do not imply endorsement or association with the linked site.": "当社のウェブサイトには第三者のウェブサイトへのリンクが含まれる場合があります。これらのリンクは、あなたの利便性のために提供されており、リンクされたサイトの承認や関連を意味するものではありません。",
-    "We reserve the right to update or change these terms and conditions at any time. Modifications will be effective immediately upon posting on the website.": "これらの利用規約をいつでも更新または変更する権利を留保します。修正はウェブサイトに投稿された直後に効力を発揮します。"
+    "We reserve the right to update or change these terms and conditions at any time. Modifications will be effective immediately upon posting on the website.": "これらの利用規約をいつでも更新または変更する権利を留保します。修正はウェブサイトに投稿された直後に効力を発揮します。",
+    "We reserve the right to modify these terms and conditions at any time. Modifications will be effective immediately upon posting on the website." : "当社は、これらの利用規約をいつでも変更する権利を留保します。 変更はウェブサイトに掲載されるとすぐに有効になります。"
 }
