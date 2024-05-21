@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,17 +47,20 @@ class ReviewController extends Controller
         }
     }
 
-    public function update(Request $request, int $id): RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
-        Review::validate($request);
+        try {
+            $review = Review::findOrFail($id);
 
-        $productId = $request->input('productId');
-        $review = Product::findOrFail($productId)->reviews()->findOrFail($id);
-        $review->setComment($request->input('comment'));
-        $review->setRating($request->input('rating'));
+            if ($review->user_id !== Auth::id()) {
+                return back()->with('error', Lang::get('controllers.review_delete_unauthorized'));
+            }
 
-        $review->save();
+            $review->delete();
 
-        return back()->with('success', Lang::get('controllers.review_update_success'));
+            return back()->with('success', Lang::get('controllers.review_delete_success'));
+        } catch (ModelNotFoundException $e) {
+            return back()->with('error', Lang::get('controllers.review_not_found'));
+        }
     }
 }

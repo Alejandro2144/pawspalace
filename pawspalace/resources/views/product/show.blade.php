@@ -62,14 +62,9 @@
                         </button>
                     </div>
                 </form>
+                @if (!$viewData["existingReview"])
                 <hr>
-                @if (!$viewData["existingReview"])
                 <h4 class="text-center">{{ __('Create Review') }}</h4>
-                @else
-                <h4 class="text-center">{{ __('Edit Your Review') }}</h4>
-                @endif
-
-                @if (!$viewData["existingReview"])
                 <form action="{{ route('review.save') }}" method="POST">
                     @csrf
                     <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
@@ -78,25 +73,6 @@
                     <input type="number" min="1" max="5" class="form-control mb-2"
                         placeholder="{{ __('Enter Rating (1-5)') }}" name="rating" value="{{ old('rating') }}" />
                     <input type="submit" class="custom-button" value="{{ __('Create Review') }}">
-                </form>
-                @else
-                <form method="POST"
-                    action="{{ route('review.update', ['id' => $viewData['existingReview']->getId()]) }}">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="productId" value="{{ $viewData['product']->getId() }}">
-                    <div class="mb-3">
-                        <label class="form-label">{{ __('Comment') }}:</label>
-                        <input type="text" class="form-control" placeholder="{{ __('Enter Comment') }}" name="comment"
-                            value="{{ $viewData['existingReview']->getComment() }}" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">{{ __('Rating') }}:</label>
-                        <input type="number" min="1" max="5" class="form-control"
-                            placeholder="{{ __('Enter Rating (1-5)') }}" name="rating"
-                            value="{{ $viewData['existingReview']->getRating() }}" />
-                    </div>
-                    <button type="submit" class="custom-button">{{ __('Edit Review') }}</button>
                 </form>
                 @endif
             </div>
@@ -110,10 +86,23 @@
                     @foreach ($viewData["reviews"] as $review)
                     <div class="col">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="position: relative;">
                                 <h6 class="card-title">{{ __('User') }}: {{ $review->user->getName() }}</h6>
                                 <p class="card-text">{{ __('Rating') }}: {{ $review->getRating() }}</p>
                                 <p class="card-text">{{ __('Comment') }}: {{ $review->getComment() }}</p>
+                                <div style="position: absolute; top: 0; right: 0;">
+                                    @if ($review->user_id == auth()->id())
+                                    <form method="POST"
+                                        action="{{ route('review.delete', ['id' => $review->getId()]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-link"
+                                            style="padding: 50; border: none; background: none;">
+                                            <i class="fas fa-times text-danger"></i>
+                                        </button>
+                                    </form>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
