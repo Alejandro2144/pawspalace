@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 
-class ProductAliadosController extends Controller
+class AlliedProductController extends Controller
 {
     public function index(): View
     {
