@@ -56,6 +56,14 @@ class ProductController extends Controller
 
         $existingReview = Review::where('product_id', $productId)->where('user_id', Auth::id())->first();
 
+        if ($existingReview) {
+            $reviews = $reviews->filter(function ($review) use ($existingReview) {
+                return $review->id != $existingReview->id;
+            });
+
+            $reviews->prepend($existingReview);
+        }
+
         $viewData = [
             'title' => Lang::get('controllers.product_show_title'),
             'subtitle' => Lang::get('controllers.product_show_subtitle'),
