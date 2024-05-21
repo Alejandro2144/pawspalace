@@ -8,38 +8,17 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
     <title>@yield('title', __('Admin - PawsPalace'))</title>
-    <style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .content-container {
-        min-height: calc(100vh - 100px);
-        padding-bottom: 30px;
-    }
-
-    .footer {
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-    }
-
-    .body {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 
 <body>
     <div class="row g-0 flex-grow-1">
-        <!-- sidebar -->
         <div class="p-3 col fixed text-white bg-dark">
             <a href="{{ route('admin.home.index') }}" class="text-white text-decoration-none">
                 <span class="fs-4">{{ __('Admin Panel') }}</span>
@@ -53,20 +32,50 @@
                         class="nav-link text-white">{{ __('Appointment') }}</a></li>
                 <li>
                     <a href="{{ route('home.index') }}"
-                        class="mt-2 btn bg-primary text-white">{{ __('Go back to the home page') }}</a>
+                        class="mt-2 btn bg-primary text-black">{{ __('Go back to the home page') }}</a>
                 </li>
             </ul>
         </div>
-        <!-- sidebar -->
         <div class="col body">
             <nav class="p-3 shadow text-end">
-                <span class="profile-font">{{ __('Admin') }}</span>
-                <img class="img-profile rounded-circle" src="{{ asset('/img/undraw_profile.svg') }}">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="Dropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span id="selected-flag" class="flag-icon 
+                            @if(app()->getLocale() == 'en') flag-icon-gb
+                            @elseif(app()->getLocale() == 'es') flag-icon-es
+                            @elseif(app()->getLocale() == 'fr') flag-icon-fr
+                            @elseif(app()->getLocale() == 'ja') flag-icon-jp
+                            @elseif(app()->getLocale() == 'pt') flag-icon-pt
+                            @endif"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="Dropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/en') }}" onclick="setFlag('gb')"><span
+                                    class="flag-icon flag-icon-gb"></span> English</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/es') }}" onclick="setFlag('es')"><span
+                                    class="flag-icon flag-icon-es"></span> Español</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/fr') }}" onclick="setFlag('fr')"><span
+                                    class="flag-icon flag-icon-fr"></span> Français</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/ja') }}" onclick="setFlag('jp')"><span
+                                    class="flag-icon flag-icon-jp"></span> 日本語</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('locale/pt') }}" onclick="setFlag('pt')"><span
+                                    class="flag-icon flag-icon-pt"></span> Português</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <div class="content-container">
                 @yield('content')
             </div>
-            <!-- footer -->
             <div class="footer copyright py-4 text-center">
                 <div class="container">
                     <small>
@@ -74,7 +83,6 @@
                     </small>
                 </div>
             </div>
-            <!-- footer -->
         </div>
     </div>
 

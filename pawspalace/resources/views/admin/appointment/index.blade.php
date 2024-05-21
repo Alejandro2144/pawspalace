@@ -2,7 +2,7 @@
 @section('title', $viewData["title"])
 @section('content')
 <div class="card mb-4">
-    <div class="card-header">
+    <div class="card-header text-black">
         {{ __('Create Appointments') }}
     </div>
     <div class="card-body">

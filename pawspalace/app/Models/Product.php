@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
@@ -24,6 +23,7 @@ class Product extends Model
      * $this->attributes['updated_at'] - string - contains the product update timestamp
      * $this->items - Collection - contains the associated items
      * $this->reviews - Collection - contains the associated reviews
+     * $this->favorites - Collection - contains the associated favorites
      */
     protected $fillable = ['name', 'description', 'category', 'price', 'stock'];
 
@@ -160,21 +160,6 @@ class Product extends Model
     public function setReviews(Collection $reviews): void
     {
         $this->reviews = $reviews;
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function setUser(User $user): void
-    {
-        $this->user = $user;
     }
 
     public static function validateProduct(Request $request): void

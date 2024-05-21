@@ -10,7 +10,6 @@ class Favorite extends Model
     /**
      * FAVORITE ATTRIBUTES
      * $this->attributes['id'] - int - contains the favorite primary key (id)
-     * $this->attributes['state'] - boolean - contains the state of favorite
      * $this->attributes['created_at'] - timestamp - contains the favorite creation date
      * $this->attributes['updated_at'] - timestamp - contains the favorite update date
      * $this->product - Product - contains the associated Product
