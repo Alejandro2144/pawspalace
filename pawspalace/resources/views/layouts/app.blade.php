@@ -10,6 +10,7 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <title>@yield('title', __('PawsPalace'))</title>
 </head>
 
@@ -37,12 +38,15 @@
                     @else
                     <a class="nav-link active" href="{{ route('product.showFavorites') }}">{{ __('My Favorites') }}</a>
                     <a class="nav-link active" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
-                    <span class="nav-link active"><i class="fa-solid fa-wallet"></i>: ${{ Auth::user()->getBalance() }}</span>
-                    <a class="nav-link active" href="{{ route('myaccount.orders') }}"><i class="fa-solid fa-receipt"></i> Orders</a>
+                    <span class="nav-link active"><i class="fa-solid fa-wallet"></i>:
+                        ${{ Auth::user()->getBalance() }}</span>
+                    <a class="nav-link active" href="{{ route('myaccount.orders') }}"><i
+                            class="fa-solid fa-receipt"></i> Orders</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
-                            onclick="document.getElementById('logout').submit();"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            onclick="document.getElementById('logout').submit();"><i
+                                class="fa-solid fa-right-from-bracket"></i></a>
                         @csrf
                     </form>
                     @endguest
@@ -103,15 +107,22 @@
     @endif
 
     <div class="footer">
-        <div class="container">
+        <div class="center-content">
             <a class="nav-link" href="{{ route('home.about') }}">{{ __('About Us') }}</a>
             <small>
                 {{ __('Copyright - PawsPalace') }}
             </small>
         </div>
+
+        @if(Auth::check() && Auth::user()->getRole() === 'admin')
+        <div class="admin-panel">
+            <a class="nav-link" href="{{ route('admin.home.index') }}">{{ __('Admin Panel') }}</a>
+        </div>
+        @endif
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}"></script>
     <script src="{{ asset('js/map.js') }}"></script>
 
