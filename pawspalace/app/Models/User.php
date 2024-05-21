@@ -27,6 +27,8 @@ class User extends Authenticatable
      * $this->attributes['updated_at'] - timestamp - contains the user update date
      * $this->orders - Collection - contains the associated orders
      * $this->reviews - Collection - contains the associated reviews
+     * $this->products - Collection - contains the associated products
+     * $this->favorites - Collection - contains the associated favorites
      */
 
     /**
