@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\View\View;
 
 class AlliedProductController extends Controller
 {
@@ -10,11 +12,11 @@ class AlliedProductController extends Controller
     {
         $viewData = [];
 
-        $response = Http::get('http://34.172.10.50/public/api/recipes');
+        $response = Http::get('http://temporal.migueljaramillo.tech/api/travels');
         $recipes = $response->json();
 
         $viewData['recipes'] = $recipes;
 
-        return view('products.index')->with('viewData', $viewData);
+        return view('allied.product')->with('viewData', $viewData);
     }
 }
