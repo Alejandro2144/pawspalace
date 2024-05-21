@@ -11,7 +11,6 @@
         <li><a href="{{ route('product.showFavorites') }}">{{ __('Favorites') }}</a></li>
     </ul>
 </div>
-
 <div class="container">
     @if ($favorites->isEmpty())
     <p>{{ __('No favorite products found.') }}</p>

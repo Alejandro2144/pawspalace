@@ -19,7 +19,8 @@
 
 <body>
     <div class="row g-0 flex-grow-1">
-        <div class="p-3 col fixed text-white bg-dark">
+        <div class="p-3 col fixed custom-bg">
+
             <a href="{{ route('admin.home.index') }}" class="text-white text-decoration-none">
                 <span class="fs-4">{{ __('Admin Panel') }}</span>
             </a>
@@ -32,7 +33,7 @@
                         class="nav-link text-white">{{ __('Appointment') }}</a></li>
                 <li>
                     <a href="{{ route('home.index') }}"
-                        class="mt-2 btn bg-primary text-black">{{ __('Go back to the home page') }}</a>
+                        class="mt-2 btn btn-go">{{ __('Go back to the home page') }}</a>
                 </li>
             </ul>
         </div>
@@ -85,9 +86,7 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
