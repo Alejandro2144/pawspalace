@@ -9,38 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
     <title>@yield('title', __('Admin - PawsPalace'))</title>
-    <style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .content-container {
-        min-height: calc(100vh - 100px);
-        padding-bottom: 30px;
-    }
-
-    .footer {
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-    }
-
-    .body {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    </style>
 </head>
 
 <body>
     <div class="row g-0 flex-grow-1">
-        <!-- sidebar -->
-        <div class="p-3 col fixed text-white bg-dark">
+        <div class="p-3 col fixed custom-bg">
             <a href="{{ route('admin.home.index') }}" class="text-white text-decoration-none">
                 <span class="fs-4">{{ __('Admin Panel') }}</span>
             </a>
@@ -53,11 +26,10 @@
                         class="nav-link text-white">{{ __('Appointment') }}</a></li>
                 <li>
                     <a href="{{ route('home.index') }}"
-                        class="mt-2 btn bg-primary text-white">{{ __('Go back to the home page') }}</a>
+                        class="mt-2 btn btn-go">{{ __('Go back to the home page') }}</a>
                 </li>
             </ul>
         </div>
-        <!-- sidebar -->
         <div class="col body">
             <nav class="p-3 shadow text-end">
                 <span class="profile-font">{{ __('Admin') }}</span>
@@ -66,7 +38,6 @@
             <div class="content-container">
                 @yield('content')
             </div>
-            <!-- footer -->
             <div class="footer copyright py-4 text-center">
                 <div class="container">
                     <small>
@@ -74,12 +45,9 @@
                     </small>
                 </div>
             </div>
-            <!-- footer -->
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

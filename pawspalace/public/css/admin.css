@@ -1,5 +1,5 @@
 .copyright {
-    background-color: #1a252f;
+    background-color: #A0153E;
 }
 
 .fixed {
@@ -14,6 +14,13 @@
 hr {
     margin-top: 0.8em;
     margin-bottom: 0.8em;
+}
+
+.btn-go {
+    background-color: #FFEBB2;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .img-profile {
@@ -31,3 +38,33 @@ hr {
     background-color: #f8f9fc;
     border-bottom: 1px solid #e3e6f0;
 }
+
+.custom-bg {
+    background-color: #A0153E;
+    font-weight: bold;
+  }
+
+html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-container {
+        min-height: calc(100vh - 100px);
+        padding-bottom: 30px;
+    }
+
+    .footer {
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
