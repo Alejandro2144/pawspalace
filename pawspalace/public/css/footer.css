@@ -1,0 +1,15 @@
+.footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .center-content {
+    text-align: center;
+}
+
+.footer .admin-panel {
+    position: absolute;
+    right: 0;
+}
