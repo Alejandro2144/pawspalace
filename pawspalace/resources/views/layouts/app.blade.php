@@ -41,7 +41,7 @@
                     <span class="nav-link active"><i class="fa-solid fa-wallet"></i>:
                         ${{ Auth::user()->getBalance() }}</span>
                     <a class="nav-link active" href="{{ route('myaccount.orders') }}"><i
-                            class="fa-solid fa-receipt"></i> Orders</a>
+                            class="fa-solid fa-receipt"></i> {{ __('Orders') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"

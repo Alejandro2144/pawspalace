@@ -261,7 +261,7 @@
     "Cart": "Panier",
     "Schedule Appointment": "Planifier un rendez-vous",
     "My Favorites": "Mes Favoris",
-    "My Orders": "Mes Commandes",
+    "Orders": "Mes Commandes",
     "Welcome to PawsPalace": "Bienvenue chez PawsPalace",
     "Order #": "Commande #",
     "Date:": "Date :",
@@ -356,5 +356,6 @@
     "We shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use or access to this website.": "Nous ne serons pas responsables des dommages directs, indirects, accessoires, spéciaux, consécutifs ou punitifs découlant de votre utilisation ou de votre accès à ce site Web.",
     "Our website may contain links to third-party websites. These links are provided solely for your convenience and do not imply endorsement or association with the linked site.": "Notre site Web peut contenir des liens vers des sites Web de tiers. Ces liens sont fournis uniquement pour votre commodité et n'impliquent pas d'approbation ou d'association avec le site lié.",
     "We reserve the right to update or change these terms and conditions at any time. Modifications will be effective immediately upon posting on the website.": "Nous nous réservons le droit de mettre à jour ou de modifier ces termes et conditions à tout moment. Les modifications seront effectives immédiatement après leur publication sur le site Web.",
-    "We collect personal information when you register on our online store, place an order, subscribe to our newsletter, or complete a form. The information we collect may include your name, email address, postal address, phone number, and payment details.": "Nous recueillons des informations personnelles lorsque vous vous inscrivez sur notre boutique en ligne, passez une commande, vous abonnez à notre newsletter ou remplissez un formulaire. Les informations que nous recueillons peuvent inclure votre nom, votre adresse e-mail, votre adresse postale, votre numéro de téléphone et vos informations de paiement."
+    "We collect personal information when you register on our online store, place an order, subscribe to our newsletter, or complete a form. The information we collect may include your name, email address, postal address, phone number, and payment details.": "Nous recueillons des informations personnelles lorsque vous vous inscrivez sur notre boutique en ligne, passez une commande, vous abonnez à notre newsletter ou remplissez un formulaire. Les informations que nous recueillons peuvent inclure votre nom, votre adresse e-mail, votre adresse postale, votre numéro de téléphone et vos informations de paiement.",
+    "We reserve the right to modify these terms and conditions at any time. Modifications will be effective immediately upon posting on the website." : "Nous nous réservons le droit de modifier ces termes et conditions à tout moment. Les modifications entreront en vigueur dès leur publication sur le site Web."
 }

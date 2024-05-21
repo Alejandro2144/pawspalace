@@ -261,7 +261,7 @@
     "Cart": "カート",
     "Schedule Appointment": "予約のスケジュール",
     "My Favorites": "お気に入り",
-    "My Orders": "私の注文",
+    "Orders": "私の注文",
     "Welcome to PawsPalace": "PawsPalaceへようこそ",
     "Order #": "注文番号",
     "Date:": "日付：",
@@ -357,5 +357,6 @@
     "These terms and conditions shall be governed and construed in accordance with the laws of the country in which we are located.": "これらの利用規約は、当社が所在する国の法律に従って解釈され、適用されます。",
     "We shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from your use or access to this website.": "当社は、このウェブサイトのご利用やアクセスに起因する直接、間接、付随的、特別、結果的、または懲罰的な損害について一切責任を負いません。",
     "Our website may contain links to third-party websites. These links are provided solely for your convenience and do not imply endorsement or association with the linked site.": "当社のウェブサイトには第三者のウェブサイトへのリンクが含まれる場合があります。これらのリンクは、あなたの利便性のために提供されており、リンクされたサイトの承認や関連を意味するものではありません。",
-    "We reserve the right to update or change these terms and conditions at any time. Modifications will be effective immediately upon posting on the website.": "これらの利用規約をいつでも更新または変更する権利を留保します。修正はウェブサイトに投稿された直後に効力を発揮します。"
+    "We reserve the right to update or change these terms and conditions at any time. Modifications will be effective immediately upon posting on the website.": "これらの利用規約をいつでも更新または変更する権利を留保します。修正はウェブサイトに投稿された直後に効力を発揮します。",
+    "We reserve the right to modify these terms and conditions at any time. Modifications will be effective immediately upon posting on the website." : "当社は、これらの利用規約をいつでも変更する権利を留保します。 変更はウェブサイトに掲載されるとすぐに有効になります。"
 }
