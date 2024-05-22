@@ -58,7 +58,7 @@
 </div>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header text-black">
         {{ __('Manage Products') }}
     </div>
     <div class="card-body">

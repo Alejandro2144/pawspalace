@@ -63,7 +63,7 @@
 </div>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header text-black">
         {{ __('Manage Appointments') }}
     </div>
     <div class="card-body">
