@@ -11,7 +11,7 @@ class AlliedProductController extends Controller
     {
         $viewData = [];
 
-        $response = Http::get('http://temporal.migueljaramillo.tech/api/travels');
+        $response = Http::get('http://104.197.190.145/public/api/recipes');
         $recipes = $response->json();
 
         $viewData['recipes'] = $recipes;

@@ -67,7 +67,7 @@ Route::put('/review/{id}/update', 'App\Http\Controllers\ReviewController@update'
 Auth::routes();
 
 // Allied products route
-Route::get('/allied-products', 'App\Http\Controllers\AlliedProductController@index')->name('productos.aliados');
+Route::get('/allied-products', 'App\Http\Controllers\AlliedProductController@index')->name('allied.products');
 
 //Lang Switcher
 Route::get('/locale/{locale}', function ($locale) {

@@ -31,6 +31,7 @@
                     <a class="nav-link active" href="{{ route('product.index') }}">{{ __('Products') }}</a>
                     <a class="nav-link active"
                         href="{{ route('appointment.index') }}">{{ __('Schedule Appointment') }}</a>
+                    <a class="nav-link active" href="{{ route('allied.products') }}">{{ __('Allieds') }}</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
