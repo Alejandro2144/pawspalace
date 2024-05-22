@@ -16,7 +16,7 @@
                             <tr>
                                 <th>{{ __('Date') }}</th>
                                 <th>{{ __('Time') }}</th>
-                                <th>{{ __('Duration') }}</th>
+                                <th>{{ __('Duration (min)') }}</th>
                                 <th>{{ __('Modality') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
